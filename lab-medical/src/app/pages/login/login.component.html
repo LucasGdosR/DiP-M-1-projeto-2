@@ -1,19 +1,43 @@
-<div class="container-fluid">
-    <div class="row">
+<div class="container">
+    <div class="row my-5">
         <div class="col-6 border-end border-primary border-2">
-            <img width="100%" src="../../../assets/pagina-login.png" alt="Ícone da página de login">
+            <img class="my-5" width="100%" src="../../../assets/pagina-login.png" alt="Ícone da página de login">
         </div>
         <div class="col-6 border-start border-primary border-2">
-            <label for="criar-conta">Não possui uma conta?</label>
-            <button>Criar Conta</button>
-            <h1>Login</h1>
-            <label for="e-mail">E-Mail</label><br>
-            <input type="text">               <br>
-            <label for="senha">Senha</label>  <br>
-            <input type="password">           <br>
-            <button>Entrar</button>           <br>
-            <a href="">Esqueceu sua senha?</a><br>
-            <img src="../../../favicon.ico" alt="Ícone do site">
+            <div class="row">
+                <div class="offset-md-3 col-5 my-5">
+                    <label class="" for="criar-conta">Não possui uma conta?</label>
+                </div>
+                <div class="col-4 my-5">
+                    <button class="btn btn-info">Criar Conta</button>
+                </div>
+                <h1 class="col-12 ms-5 my-5">Login</h1>
+            </div>
+            <form class="row ms-3">
+                <div class="col-12 mt-3">
+                    <label for="e-mail" class="form-label">E-Mail</label>
+                </div>
+                <div class="col-12">
+                    <input class="form-control" type="text">
+                </div>
+                <div class="col-12 mt-3">
+                    <label for="senha" class="form-label">Senha</label>
+                </div>
+                <div class="col-12 mb-5">
+                    <input class="form-control" type="password">           
+                </div>
+                <div class="col-12 mt-5">
+                    <input class="btn btn-primary form-control" type="submit" value="Entrar">
+                </div>
+            </form>
+            <div class="row">
+                <div class="col-12 my-2 text-center">
+                    <a href="">Esqueceu sua senha?</a><br>
+                </div>
+                <div class="col-12 mt-5 text-end">
+                    <img src="../../../favicon.ico" alt="Ícone do site">
+                </div>
+            </div>
         </div>
     </div>
 </div>
