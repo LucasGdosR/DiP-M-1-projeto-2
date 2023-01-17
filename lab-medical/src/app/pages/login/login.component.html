@@ -9,7 +9,7 @@
                     <label class="" for="criar-conta">Não possui uma conta?</label>
                 </div>
                 <div class="col-4 my-5">
-                    <button class="btn btn-info">Criar Conta</button>
+                    <button class="btn btn-info" name="criar-conta" id="criar-conta" type="button" data-bs-toggle="modal" data-bs-target="#modal-cadastral">Criar Conta</button>
                 </div>
                 <h1 class="col-12 ms-5 my-5">Login</h1>
             </div>
@@ -18,13 +18,13 @@
                     <label for="e-mail" class="form-label">E-Mail</label>
                 </div>
                 <div class="col-12">
-                    <input class="form-control" type="text">
+                    <input class="form-control" required name="e-mail" id="e-mail" type="email">
                 </div>
                 <div class="col-12 mt-3">
                     <label for="senha" class="form-label">Senha</label>
                 </div>
                 <div class="col-12 mb-5">
-                    <input class="form-control" type="password">           
+                    <input class="form-control" required name="senha" id="senha" type="password">           
                 </div>
                 <div class="col-12 mt-5">
                     <input class="btn btn-primary form-control" type="submit" value="Entrar">
@@ -40,4 +40,34 @@
             </div>
         </div>
     </div>
+</div>
+<div class="modal fade" id="modal-cadastral" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Crie sua conta</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="cadastro-email" class="col-form-label">E-mail</label>
+            <input required type="email" class="form-control" id="cadastro-email">
+          </div>
+          <div class="mb-3">
+            <label for="modal-senha" class="col-form-label">Senha:</label>
+            <input required type="password" minlength="9" class="form-control" id="modal-senha">
+          </div>
+          <div class="mb-3">
+            <label for="modal-confirma-senha" class="col-form-label">Senha:</label>
+            <input required type="password" minlength="9" class="form-control" id="modal-confirma-senha">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+          </div>
+        </form>
+    </div>
+    </div>
+  </div>
 </div>
