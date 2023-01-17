@@ -13,18 +13,18 @@
                 </div>
                 <h1 class="col-12 ms-5 my-5">Login</h1>
             </div>
-            <form class="row ms-3">
+            <form (submit)="authenticate()" class="row ms-3">
                 <div class="col-12 mt-3">
                     <label for="e-mail" class="form-label">E-Mail</label>
                 </div>
                 <div class="col-12">
-                    <input class="form-control" required name="e-mail" id="e-mail" type="email">
+                    <input [(ngModel)]="email" class="form-control" required name="e-mail" id="e-mail" type="email">
                 </div>
                 <div class="col-12 mt-3">
                     <label for="senha" class="form-label">Senha</label>
                 </div>
                 <div class="col-12 mb-5">
-                    <input class="form-control" required name="senha" id="senha" type="password">           
+                    <input [(ngModel)]="password" class="form-control" required name="senha" id="senha" type="password">           
                 </div>
                 <div class="col-12 mt-5">
                     <input class="btn btn-primary form-control" type="submit" value="Entrar">
@@ -49,22 +49,22 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form #formCadastro="ngForm" ngNativeValidate (ngSubmit)="createAccount(formCadastro)">
           <div class="mb-3">
             <label for="cadastro-email" class="col-form-label">E-mail</label>
-            <input required type="email" class="form-control" id="cadastro-email">
+            <input [(ngModel)]="createdEmail" required type="email" class="form-control" id="cadastro-email" name="cadastro-email">
           </div>
           <div class="mb-3">
             <label for="modal-senha" class="col-form-label">Senha:</label>
-            <input required type="password" minlength="9" class="form-control" id="modal-senha">
+            <input [(ngModel)]="createdPassword" required type="password" minlength="9" class="form-control" id="modal-senha" name="modal-senha">
           </div>
           <div class="mb-3">
             <label for="modal-confirma-senha" class="col-form-label">Senha:</label>
-            <input required type="password" minlength="9" class="form-control" id="modal-confirma-senha">
+            <input [(ngModel)]="confirmedPassword" required type="password" minlength="9" class="form-control" id="modal-confirma-senha" name="modal-confirma-senha">
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <button id="closeModal" type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <input type="submit" class="btn btn-primary" value="Cadastrar">
           </div>
         </form>
     </div>
