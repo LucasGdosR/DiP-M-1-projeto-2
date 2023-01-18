@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
       
       this.loginService.login(this.email)
 
-      this.router.navigate(['inicio'])
+      this.router.navigate(['/inicio'])
     }
     else alert("Usuário e senha inválidos.")
   }

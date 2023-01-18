@@ -11,10 +11,10 @@
               Geral
             <ul class="nav nav-pills flex-column mb-auto">
               <li class="nav-item">
-                <a href="#" class="nav-link active" aria-current="page">INICIO</a>
+                <a [routerLink]='"/inicio"' class="nav-link active" aria-current="page">INICIO</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link active" aria-current="page">SAIR</a>
+                <a [routerLink]='"/login"' (click)="logout()" class="nav-link active" aria-current="page">SAIR</a>
               </li>
             </ul>
           </li>
@@ -22,10 +22,10 @@
               Pacientes
             <ul class="nav nav-pills flex-column mb-auto">
               <li class="nav-item">
-                <a href="#" class="nav-link active" aria-current="page">CADASTRAR</a>
+                <a [routerLink]='"/cadastrar-paciente"' class="nav-link active" aria-current="page">CADASTRAR</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link active" aria-current="page">LISTAR PRONTUÁRIO</a>
+                <a [routerLink]='"/prontuarios"'  class="nav-link active" aria-current="page">LISTAR PRONTUÁRIO</a>
               </li>
             </ul>
           </li>
@@ -33,10 +33,10 @@
               Exames
             <ul class="nav nav-pills flex-column mb-auto">
               <li class="nav-item">
-                <a href="#" class="nav-link active" aria-current="page">CADASTRAR CONSULTA</a>
+                <a [routerLink]='"/cadastrar-consulta"' class="nav-link active" aria-current="page">CADASTRAR CONSULTA</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link active" aria-current="page">CADASTRAR EXAME</a>
+                <a [routerLink]='"/cadastrar-exame"' class="nav-link active" aria-current="page">CADASTRAR EXAME</a>
               </li>
             </ul>
           </li>

@@ -1,4 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,7 +10,9 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 export class MenuComponent implements AfterViewInit{
   sidebarState : string = "Expandir"
 
-  shrinkOrExpand(){
+  constructor(private logoutService : LoginService, private router : Router){}
+
+  shrinkOrExpand(): void {
     if (this.sidebarState === "Encolher")
       this.sidebarState = "Expandir"
 
@@ -17,6 +21,10 @@ export class MenuComponent implements AfterViewInit{
 
   ngAfterViewInit(): void {
     document.getElementById("collapseButton")?.click()
+  }
+
+  logout(): void {
+    this.logoutService.logout()
   }
   
 }
