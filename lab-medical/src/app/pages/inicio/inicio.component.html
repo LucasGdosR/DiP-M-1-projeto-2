@@ -1,3 +1,12 @@
 <app-template>
-    <div class="bg-info">teste</div>
+    <div>
+        <h1>Estatísticas do Sistema</h1>
+        <ul>
+            <li *ngFor="let statistic of statistics">
+                <img [src]="statistic['icon']" alt="">
+                <p>{{ statistic['quantity'] }}</p>
+                <p>{{ statistic['title'] }}</p>
+            </li>
+        </ul>
+    </div>
 </app-template>
