@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent {
+  constructor(public loginService : LoginService){}
 
+  pageTitle : string = "placeholder" // Pegar informação de título da rota.
 }
