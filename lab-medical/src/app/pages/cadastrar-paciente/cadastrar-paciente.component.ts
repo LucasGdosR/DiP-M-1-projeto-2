@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import Address from 'src/app/interfaces/address.interface';
+import Patient from 'src/app/interfaces/patient.interface';
+import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
   selector: 'app-cadastrar-paciente',
@@ -6,5 +10,69 @@ import { Component } from '@angular/core';
   styleUrls: ['./cadastrar-paciente.component.scss']
 })
 export class CadastrarPacienteComponent {
+  fullName: string = ""
+  gender: string = ""
+  birthday: Date = new Date()
+  cpf: string = ""
+  rg: string = ""
+  maritalStatus: string = ""
+  telephone: string = ""
+  email?: string;
+  countryOfBirth: string = "";
+  emergencyContact: string = "";
+  alergyList?: string
+  careList?: string
+  insurance: string = "";
+  insuranceId?: number
+  insuranceExpired?: Date;
+  
+  listaDeAlergias?: string;
+  listaDeCuidadosEspecificos?: string = "";
+ 
+  cep: string = ""
+  city: string = ""
+  state: string = ""
+  street: string = ""
+  streetNumber: string = ""
+  complement: string = ""
+  neighborhood: string = ""
+  reference: string = ""
+  
+  constructor(public database: DatabaseService) {}
+  
+  registerPatient() {
+    const address: Address = {
+      cep: this.cep,
+      cidade: this.city,
+      estado: this.state,
+      logradouro: this.street,
+      numero: this.streetNumber,
+      complemento: this.complement,
+      bairro: this.neighborhood,
+      referencia: this.reference
+    }
 
+    const patient: Patient = {
+    id: this.database.nextPatientID++,
+    nomeCompleto: this.fullName,
+    genero: this.gender,
+    dataDeNascimento: this.birthday,
+    cpf: this.cpf,
+    rg: this.rg,
+    estadoCivil: this.maritalStatus,
+    telefone: this.telephone,
+    email: this?.email,
+    naturalidade: this.countryOfBirth,
+    contatoDeEmergencia: this.emergencyContact,
+    listaDeAlergias: this?.alergyList,
+    listaDeCuidadosEspecificos: this?.careList,
+    convenio: this?.insurance,
+    numeroDoConvenio: this?.insuranceId,
+    validadeDoConvenio: this?.insuranceExpired,
+    endereco: address
+    }
+
+  this.database.patients.push(patient)
+  this.database.persist('patients', this.database.patients)
+  }
 }
