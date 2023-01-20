@@ -1,1 +1,157 @@
-<p>cadastrar-paciente works!</p>
+<app-template>
+    <div class="container">
+        <h2 class="row mx-3 mt-3">Preencha os campos para cadastrar</h2>
+        <form class="row mx-3 border rounded">
+            <h3 class="my-2 col-6 fs-4">Identificação</h3>
+            <button class="my-2 col-2 btn btn-outline-secondary" name="edit" id="edit">Editar</button>
+            <button class="my-2 col-2 btn btn-outline-danger fw-bold">Deletar</button>
+            <button class="my-2 col-2 btn btn-primary">Salvar</button>
+            
+            <div class="col-6 form-floating my-2">
+                <input class="form-control" type="text" id="fullName">
+                <label for="fullName">Nome Completo</label>
+            </div>
+
+            <div class="col-3 form-floating my-2">
+                <select class="form-control" name="gender" id="gender">
+                    <option value=""></option>
+                    <option value="male">Masculino</option>
+                    <option value="female">Feminino</option>
+                </select>
+                <label for="gender">Gênero</label>
+            </div>
+
+            <div class="col-3 form-floating my-2">
+                <input class="form-control" type="date" id="birthday">
+                <label for="birthday">Data Nascimento</label>
+            </div>
+
+            <div class="col-4 form-floating my-2">
+                <input class="form-control" type="text" id="cpf">
+                <label for="cpf">CPF</label>
+            </div>
+            
+            <div class="col-4 form-floating my-2">
+                <input class="form-control" type="text" id="rg">
+                <label for="rg">RG</label>
+            </div>
+
+            <div class="col-4 form-floating my-2">
+                <select class="form-control" name="maritalStatus" id="maritalStatus">
+                    <option value=""></option>
+                    <option value="single">Solteiro</option>
+                    <option value="married">Casado</option>
+                    <option value="widow">Viúvo</option>
+                </select>
+                <label for="maritalStatus">Estado Civil</label>
+            </div>
+            
+            <div class="col-4 form-floating my-2">
+                <input class="form-control" type="text" id="telephone">
+                <label for="telephone">Telefone</label>
+            </div>
+            
+            <div class="col-4 form-floating my-2">
+                <input class="form-control" type="email" id="email">
+                <label for="email">E-mail</label>
+            </div>
+
+            <div class="col-4 form-floating my-2">
+                <input class="form-control" type="text" id="countryOfBirth">
+                <label for="countryOfBirth">Naturalidade</label>
+            </div>
+
+
+            <h3 class="my-2 col-12 fs-4">Convênio</h3>
+
+            <div class="col-4 form-floating my-2">
+                <input class="form-control" type="text" id="insurance">
+                <label for="insurance">Convênio</label>
+            </div>
+
+            <div class="col-4 form-floating my-2">
+                <input class="form-control" type="number" id="insuranceId">
+                <label for="insuranceId">Número da Carteira</label>
+            </div>
+
+            <div class="col-4 form-floating my-2">
+                <input class="form-control" type="date" id="insuranceExpired">
+                <label for="insuranceExpired">Validade</label>
+            </div>
+
+
+            <h3 class="my-2 col-12 fs-4">Dados de Endereço</h3>
+
+            <div class="col-4 form-floating my-2">
+                <input class="form-control" type="text" id="cep">
+                <label for="cep">CEP</label>
+            </div>
+            
+            <div class="col-6 form-floating my-2">
+                <input class="form-control" type="text" id="city">
+                <label for="city">Cidade</label>
+            </div>
+
+            <div class="col-2 form-floating my-2">
+                <select class="form-control" name="state" id="state">
+                    <option value=""></option>
+                    <option value="AC">AC</option>
+                    <option value="AL">AL</option>
+                    <option value="AM">AM</option>
+                    <option value="BA">BA</option>
+                    <option value="CE">CE</option>
+                    <option value="DF">DF</option>
+                    <option value="ES">ES</option>
+                    <option value="GO">GO</option>
+                    <option value="MA">MA</option>
+                    <option value="MG">MG</option>
+                    <option value="MS">MS</option>
+                    <option value="MT">MT</option>
+                    <option value="PA">PA</option>
+                    <option value="PB">PB</option>
+                    <option value="PE">PE</option>
+                    <option value="PI">PI</option>
+                    <option value="PR">PR</option>
+                    <option value="RJ">RJ</option>
+                    <option value="RN">RN</option>
+                    <option value="RO">RO</option>
+                    <option value="RR">RR</option>
+                    <option value="RS">RS</option>
+                    <option value="SC">SC</option>
+                    <option value="SE">SE</option>
+                    <option value="SP">SP</option>
+                    <option value="TO">TO</option>
+                </select>
+                <label for="state">UF</label>
+            </div>
+
+            <div class="col-10 form-floating my-2">
+                <input class="form-control" type="text" id="street">
+                <label for="street">Logradouro</label>
+            </div>
+
+            <div class="col-2 form-floating my-2">
+                <input class="form-control" type="number" id="streetNumber">
+                <label for="streetNumber">Número</label>
+            </div>
+
+            <div class="col-4 form-floating mt-2 mb-3">
+                <input class="form-control" type="text" id="complement">
+                <label for="complement">Complemento</label>
+            </div>
+            
+            <div class="col-4 form-floating mt-2 mb-3">
+                <input class="form-control" type="text" id="neighborhood">
+                <label for="neighborhood">Bairro</label>
+            </div>
+
+            <div class="col-4 form-floating mt-2 mb-3">
+                <input class="form-control" type="text" id="reference">
+                <label for="reference">Ponto de Referência</label>
+            </div>
+            
+
+
+        </form>
+    </div>
+</app-template>
