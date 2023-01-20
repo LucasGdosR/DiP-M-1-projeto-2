@@ -1,17 +1,28 @@
 <app-template>
     <div class="container">
-        <h1 class="row">Estatísticas do Sistema</h1>
-        <ul class="row list-unstyled text-center">
+        <h1 class="row mx-3 mt-3">Estatísticas do Sistema</h1>
+        <ul class="row list-unstyled text-center mx-3">
             <li class="col-4 border" *ngFor="let statistic of statistics">
                 <img [src]="statistic['icon']" alt="">
                 <span class="fs-1 ms-3">{{ statistic['quantity'] }}</span>
                 <p class="fw-bold">{{ statistic['title'] }}</p>
             </li>
         </ul>
-        <h2 class="row">Informações Rápidas de Pacientes</h2>
-        <form class="row">
-            <input class="col-8 form-control" type="text" placeholder="Digite o nome do paciente">
-            <input class="col-2 btn btn-outline-secondary" type="button" value="Buscar">
+        <h2 class="row mx-3">Informações Rápidas de Pacientes</h2>
+        <form (submit)="filterPatients()" class="row mx-3">
+            <input [(ngModel)]="nomeBuscado" class="col-8 form-control" type="text" placeholder="Digite o nome do paciente">
+            <input class="col-2 btn btn-outline-secondary" type="submit" value="Buscar">
         </form>
+        <ul class="row list-unstyled text-center mx-3">
+            <li class="col-3 my-3 border" *ngFor="let patient of filteredPatients">
+                <img class="mt-4" src="../../../assets/foto-de-perfil.png" alt="Foto do paciente">
+                <p class="fs-4 fw-bold my-2">{{ patient.nomeCompleto }}</p>
+                <p class="fs-5 my-2">{{ patient.dataDeNascimento | age }}</p>
+                <p class="fs-4 my-2">{{ patient.telefone }}</p>
+                <p class="fs-4 my-2">{{ patient.convenio ? patient.convenio : "Sem Plano" }}</p>
+                <a [routerLink]="patient.id.toString()" class="fs-5 my-2">ver mais</a>
+            </li>
+
+        </ul>
     </div>
 </app-template>
