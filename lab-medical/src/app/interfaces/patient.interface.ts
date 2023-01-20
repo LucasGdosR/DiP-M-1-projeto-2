@@ -1,6 +1,7 @@
 import Address from "./address.interface";
 
 export default interface Patient {
+    id: number;
     nomeCompleto: string;
     genero: string;
     dataDeNascimento: Date;
