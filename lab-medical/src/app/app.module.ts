@@ -9,6 +9,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { TemplateComponent } from './components/template/template.component';
+import { AgePipe } from './pipes/age.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { TemplateComponent } from './components/template/template.component';
     MenuComponent,
     ToolbarComponent,
     InicioComponent,
-    TemplateComponent
+    TemplateComponent,
+    AgePipe
   ],
   imports: [
     BrowserModule,
