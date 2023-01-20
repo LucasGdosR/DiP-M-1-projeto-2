@@ -10,6 +10,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { TemplateComponent } from './components/template/template.component';
 import { AgePipe } from './pipes/age.pipe';
+import { CadastrarPacienteComponent } from './pages/cadastrar-paciente/cadastrar-paciente.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AgePipe } from './pipes/age.pipe';
     ToolbarComponent,
     InicioComponent,
     TemplateComponent,
-    AgePipe
+    AgePipe,
+    CadastrarPacienteComponent
   ],
   imports: [
     BrowserModule,
