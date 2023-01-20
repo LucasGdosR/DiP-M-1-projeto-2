@@ -1,11 +1,11 @@
 <app-template>
-    <div>
-        <h1>Estatísticas do Sistema</h1>
-        <ul>
-            <li *ngFor="let statistic of statistics">
+    <div class="container">
+        <h1 class="row">Estatísticas do Sistema</h1>
+        <ul class="row list-unstyled text-center">
+            <li class="col-4 border" *ngFor="let statistic of statistics">
                 <img [src]="statistic['icon']" alt="">
-                <p>{{ statistic['quantity'] }}</p>
-                <p>{{ statistic['title'] }}</p>
+                <span class="fs-1 ms-3">{{ statistic['quantity'] }}</span>
+                <p class="fw-bold">{{ statistic['title'] }}</p>
             </li>
         </ul>
     </div>
