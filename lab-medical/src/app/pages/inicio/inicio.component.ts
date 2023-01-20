@@ -9,6 +9,8 @@ import { DatabaseService } from 'src/app/services/database.service';
 export class InicioComponent {
   constructor(private database: DatabaseService) {}
 
+  filteredPatients = this.database.patients
+  nomeBuscado : string = ""
 
   statistics = [
     { 
@@ -27,4 +29,8 @@ export class InicioComponent {
       "icon" : "../../../../assets/prontuario-medico.png"
     }
   ]
+
+  filterPatients() {
+    this.filteredPatients = this.database.patients.filter(patient => patient.nomeCompleto.toLocaleLowerCase().includes(this.nomeBuscado.toLocaleLowerCase()))
+  }
 }
