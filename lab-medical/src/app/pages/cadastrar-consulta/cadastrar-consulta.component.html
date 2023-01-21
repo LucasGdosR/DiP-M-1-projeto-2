@@ -1,15 +1,6 @@
 <app-template>
     <div class="container">
-        <h2 class="row mx-3 mt-3">Encontre o paciente</h2>
-
-        <form ngNativeValidate #searchForm="ngForm" (ngSubmit)="findPatient()" class="mx-3 row">
-            <div class="col-9 form-floating my-3">
-                <input [(ngModel)]="pacienteBuscado" class="form-control" type="text" id="pacienteBuscado" name="pacienteBuscado" required>
-                <label for="pacienteBuscado">Digite o nome do paciente</label>
-            </div>
-
-            <input type="submit" class="my-4 offset-md-1 col-2 btn btn-primary" value="Buscar">
-        </form>
+        <app-patient-search (searchEmitter)="enableForm($event)"></app-patient-search>
 
         <form ngNativeValidate #appointmentForm="ngForm" (ngSubmit)="registerAppointment(appointmentForm)" class="row mx-3 border rounded">
             <h3 class="my-2 col-4 fs-4">Consulta de {{ patientFullName }}</h3>
