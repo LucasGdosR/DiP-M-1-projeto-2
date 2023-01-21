@@ -2,6 +2,7 @@ import { Time } from "@angular/common";
 
 export default interface Exam {
     idDoPaciente: number;
+    idDoExame: number;
     nome: string;
     dataDoExame: Date;
     horario: Time;
