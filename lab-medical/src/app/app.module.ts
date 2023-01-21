@@ -11,6 +11,7 @@ import { InicioComponent } from './pages/inicio/inicio.component';
 import { TemplateComponent } from './components/template/template.component';
 import { AgePipe } from './pipes/age.pipe';
 import { CadastrarPacienteComponent } from './pages/cadastrar-paciente/cadastrar-paciente.component';
+import { CadastrarConsultaComponent } from './pages/cadastrar-consulta/cadastrar-consulta.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CadastrarPacienteComponent } from './pages/cadastrar-paciente/cadastrar
     InicioComponent,
     TemplateComponent,
     AgePipe,
-    CadastrarPacienteComponent
+    CadastrarPacienteComponent,
+    CadastrarConsultaComponent
   ],
   imports: [
     BrowserModule,
