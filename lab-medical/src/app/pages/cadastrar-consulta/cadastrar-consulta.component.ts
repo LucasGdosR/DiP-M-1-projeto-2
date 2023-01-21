@@ -1,5 +1,7 @@
+import { Time } from '@angular/common';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import Appointment from 'src/app/interfaces/appointment.interface';
 import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
@@ -18,7 +20,7 @@ export class CadastrarConsultaComponent {
 
   appointmentMotive: string = ""
   appointmentDate: Date = new Date()
-  appointmentTime: Date = new Date() // Mudar para tempo
+  appointmentTime: Time = {hours: 8, minutes: 0} // Mudar para tempo
   issueDescription: string = ""
   prescriptedMedicine?: string
   dosageAndPrecautions: string = ""
@@ -46,6 +48,19 @@ export class CadastrarConsultaComponent {
   }
 
   registerAppointment(form: NgForm) {
+    const appointment: Appointment = {
+      idDoPaciente: this.patientId,
+      idDaConsulta: this.database.nextAppointmentID++,
+      motivo: this.appointmentMotive,
+      dataDaConsulta: this.appointmentDate,
+      horario: this.appointmentTime,
+      descricao: this.issueDescription,
+      medicacao: this?.prescriptedMedicine,
+      dosagemEPrecaucoes: this.dosageAndPrecautions
+    }
 
+    this.database.appointments.push(appointment)
+    form.reset()
+    this.database.persist('appointments', this.database.appointments)
   }
 }
