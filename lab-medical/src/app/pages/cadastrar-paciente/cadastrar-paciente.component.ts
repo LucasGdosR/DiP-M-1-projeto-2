@@ -40,7 +40,7 @@ export class CadastrarPacienteComponent {
   
   constructor(public database: DatabaseService) {}
   
-  registerPatient() {
+  registerPatient(form: NgForm) {
 
     if (this.isInvalid())
       return
@@ -77,7 +77,10 @@ export class CadastrarPacienteComponent {
     }
 
   this.database.patients.push(patient)
+  form.reset()
   this.database.persist('patients', this.database.patients)
+
+  alert("Usuário cadastrado com sucesso!")
   }
 
   isInvalid(): boolean {
