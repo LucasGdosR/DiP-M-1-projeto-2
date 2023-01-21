@@ -27,7 +27,7 @@
             </div>
 
             <div class="col-4 form-floating my-2">
-                <input [(ngModel)]="cpf" class="form-control" type="text" id="cpf" name="cpf" required>
+                <input [(ngModel)]="cpf" class="form-control" type="text" id="cpf" name="cpf" required minlength="14" maxlength="14">
                 <label for="cpf">CPF</label>
             </div>
             
@@ -37,17 +37,18 @@
             </div>
 
             <div class="col-4 form-floating my-2">
-                <select [(ngModel)]="maritalStatus" class="form-control" name="maritalStatus" id="maritalStatus" name="maritalStatus">
-                    <option value=""></option>
+                <select [(ngModel)]="maritalStatus" class="form-control" name="maritalStatus" id="maritalStatus" name="maritalStatus" required>
+                    <option value="" selected disabled></option>
                     <option value="single">Solteiro</option>
                     <option value="married">Casado</option>
+                    <option value="married">Divorciado</option>
                     <option value="widow">Viúvo</option>
                 </select>
                 <label for="maritalStatus">Estado Civil</label>
             </div>
             
             <div class="col-4 form-floating my-2">
-                <input [(ngModel)]="telephone" class="form-control" type="text" id="telephone" name="telephone" required>
+                <input [(ngModel)]="telephone" class="form-control" type="text" id="telephone" name="telephone" required minlength="17" maxlength="17">
                 <label for="telephone">Telefone</label>
             </div>
             
@@ -62,7 +63,7 @@
             </div>
 
             <div class="col-4 form-floating my-2">
-                <input [(ngModel)]="emergencyContact" class="form-control" type="text" id="emergencyContact" name="emergencyContact" required>
+                <input [(ngModel)]="emergencyContact" class="form-control" type="text" id="emergencyContact" name="emergencyContact" required minlength="17" maxlength="17">
                 <label for="emergencyContact">Contato de Emergência</label>
             </div>
 

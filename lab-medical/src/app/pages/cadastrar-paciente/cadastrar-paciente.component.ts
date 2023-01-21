@@ -98,7 +98,7 @@ export class CadastrarPacienteComponent {
 
   validateCPF(): boolean {
     const re = /\d{3}.\d{3}.\d{3}-\d{2}/
-    if (this.cpf.length === 14 && this.cpf.match(re))
+    if (this.cpf.match(re))
       return true
     alert("CPF apenas no formato XXX.XXX.XXX-XX.")
     return false
@@ -106,7 +106,7 @@ export class CadastrarPacienteComponent {
 
   validateTelephone(telephone: string): boolean {
     const re = /\(\d{2}\)\ 9\ \d{4}-\d{4}/
-    if (telephone.length === 17 && telephone.match(re))
+    if (telephone.match(re))
       return true
     alert("Telefone apenas no formato (XX) 9 XXXX-XXXX.")
     return false
