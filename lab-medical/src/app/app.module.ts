@@ -12,6 +12,7 @@ import { TemplateComponent } from './components/template/template.component';
 import { AgePipe } from './pipes/age.pipe';
 import { CadastrarPacienteComponent } from './pages/cadastrar-paciente/cadastrar-paciente.component';
 import { CadastrarConsultaComponent } from './pages/cadastrar-consulta/cadastrar-consulta.component';
+import { CadastrarExameComponent } from './pages/cadastrar-exame/cadastrar-exame.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CadastrarConsultaComponent } from './pages/cadastrar-consulta/cadastrar
     TemplateComponent,
     AgePipe,
     CadastrarPacienteComponent,
-    CadastrarConsultaComponent
+    CadastrarConsultaComponent,
+    CadastrarExameComponent
   ],
   imports: [
     BrowserModule,
