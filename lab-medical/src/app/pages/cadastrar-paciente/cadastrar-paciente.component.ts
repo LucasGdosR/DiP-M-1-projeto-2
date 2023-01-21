@@ -79,6 +79,7 @@ export class CadastrarPacienteComponent {
   this.database.patients.push(patient)
   form.reset()
   this.database.persist('patients', this.database.patients)
+  this.database.persist('nextPatientID', this.database.nextPatientID)
 
   alert("Usuário cadastrado com sucesso!")
   }
