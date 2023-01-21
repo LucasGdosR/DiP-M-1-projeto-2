@@ -2,6 +2,7 @@ import { Time } from '@angular/common';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import Appointment from 'src/app/interfaces/appointment.interface';
+import Patient from 'src/app/interfaces/patient.interface';
 import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
@@ -12,8 +13,6 @@ import { DatabaseService } from 'src/app/services/database.service';
 export class CadastrarConsultaComponent {
   constructor(private database: DatabaseService) {}
 
-  foundPatient = this.database.patients
-  pacienteBuscado: string = ""
   formEnabled: boolean = false
   patientId!: number
   patientFullName: string = ""
@@ -25,26 +24,10 @@ export class CadastrarConsultaComponent {
   prescriptedMedicine?: string
   dosageAndPrecautions: string = ""
 
-  findPatient() {
-   this.foundPatient = this.database.patients.filter(patient => patient.nomeCompleto.toLocaleLowerCase().includes(this.pacienteBuscado.toLocaleLowerCase()))
-
-   if (this.foundPatient.length === 1)
-     this.enableForm()
-
-   if (this.foundPatient.length === 0)
-     return alert("Nenhum paciente com esse nome.")
-
-   if (this.foundPatient.length > 1) {
-     let names = ""
-     this.foundPatient.forEach(patient => names += patient.nomeCompleto + "\n")
-     alert("Qual " + this.pacienteBuscado + " ? Encontramos:\n" + names)
-   }
-  }
-
-  enableForm() {
+  enableForm(foundPatient: Patient) {
     this.formEnabled = true
-    this.patientId = this.foundPatient[0].id
-    this.patientFullName = this.foundPatient[0].nomeCompleto
+    this.patientId = foundPatient.id
+    this.patientFullName = foundPatient.nomeCompleto
   }
 
   registerAppointment(form: NgForm) {
@@ -62,5 +45,8 @@ export class CadastrarConsultaComponent {
     this.database.appointments.push(appointment)
     form.reset()
     this.database.persist('appointments', this.database.appointments)
+    this.database.persist('nextAppointmentID', this.database.nextAppointmentID)
+
+    alert("Consulta agendada com sucesso.")
   }
 }
