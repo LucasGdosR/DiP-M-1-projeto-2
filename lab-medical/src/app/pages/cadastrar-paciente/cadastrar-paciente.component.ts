@@ -41,6 +41,10 @@ export class CadastrarPacienteComponent {
   constructor(public database: DatabaseService) {}
   
   registerPatient() {
+
+    if (this.isInvalid())
+      return
+
     const address: Address = {
       cep: this.cep,
       cidade: this.city,
@@ -74,5 +78,37 @@ export class CadastrarPacienteComponent {
 
   this.database.patients.push(patient)
   this.database.persist('patients', this.database.patients)
+  }
+
+  isInvalid(): boolean {
+    if (this.validateBirthday() &&
+        this.validateCPF() &&
+        this.validateTelephone(this.telephone) &&
+        this.validateTelephone(this.emergencyContact))
+      return false
+    return true
+  }
+
+  validateBirthday(): boolean {
+    if (this.birthday < new Date())
+      return true
+    alert("Não é possível nascer no futuro!")
+    return false
+  }
+
+  validateCPF(): boolean {
+    const re = /\d{3}.\d{3}.\d{3}-\d{2}/
+    if (this.cpf.length === 14 && this.cpf.match(re))
+      return true
+    alert("CPF apenas no formato XXX.XXX.XXX-XX.")
+    return false
+  }
+
+  validateTelephone(telephone: string): boolean {
+    const re = /\(\d{2}\)\ 9\ \d{4}-\d{4}/
+    if (telephone.length === 17 && telephone.match(re))
+      return true
+    alert("Telefone apenas no formato (XX) 9 XXXX-XXXX.")
+    return false
   }
 }
