@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
@@ -14,6 +15,13 @@ export class CadastrarConsultaComponent {
   formEnabled: boolean = false
   patientId!: number
   patientFullName: string = ""
+
+  appointmentMotive: string = ""
+  appointmentDate: Date = new Date()
+  appointmentTime: Date = new Date() // Mudar para tempo
+  issueDescription: string = ""
+  prescriptedMedicine?: string
+  dosageAndPrecautions: string = ""
 
   findPatient() {
    this.foundPatient = this.database.patients.filter(patient => patient.nomeCompleto.toLocaleLowerCase().includes(this.pacienteBuscado.toLocaleLowerCase()))
@@ -35,5 +43,9 @@ export class CadastrarConsultaComponent {
     this.formEnabled = true
     this.patientId = this.foundPatient[0].id
     this.patientFullName = this.foundPatient[0].nomeCompleto
+  }
+
+  registerAppointment(form: NgForm) {
+
   }
 }
