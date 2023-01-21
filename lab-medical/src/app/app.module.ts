@@ -13,6 +13,7 @@ import { AgePipe } from './pipes/age.pipe';
 import { CadastrarPacienteComponent } from './pages/cadastrar-paciente/cadastrar-paciente.component';
 import { CadastrarConsultaComponent } from './pages/cadastrar-consulta/cadastrar-consulta.component';
 import { CadastrarExameComponent } from './pages/cadastrar-exame/cadastrar-exame.component';
+import { PatientSearchComponent } from './components/patient-search/patient-search.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CadastrarExameComponent } from './pages/cadastrar-exame/cadastrar-exame
     AgePipe,
     CadastrarPacienteComponent,
     CadastrarConsultaComponent,
-    CadastrarExameComponent
+    CadastrarExameComponent,
+    PatientSearchComponent
   ],
   imports: [
     BrowserModule,
