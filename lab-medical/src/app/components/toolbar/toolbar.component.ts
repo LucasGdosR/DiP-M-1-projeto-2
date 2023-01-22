@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -6,8 +7,18 @@ import { LoginService } from 'src/app/services/login.service';
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']
 })
-export class ToolbarComponent {
-  constructor(public loginService : LoginService){}
+export class ToolbarComponent implements OnInit {
+  user!: string
+  pageTitle!: string
 
-  pageTitle : string = "placeholder" // Pegar informação de título da rota.
+  constructor(private loginService : LoginService, private route: ActivatedRoute, private router: Router){}
+  
+  ngOnInit(): void {
+    this.user = this.loginService.user
+    this.pageTitle = this.route.snapshot.title!
+  }
+
+
+  
+  
 }
