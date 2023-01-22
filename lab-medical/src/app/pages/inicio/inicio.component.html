@@ -20,7 +20,7 @@
                 <p class="fs-5 my-2">{{ patient.dataDeNascimento | age }}</p>
                 <p class="fs-4 my-2">{{ patient.telefone }}</p>
                 <p class="fs-4 my-2">{{ patient.convenio ? patient.convenio : "Sem Plano" }}</p>
-                <a [routerLink]="patient.id.toString()" class="fs-5 my-2">ver mais</a>
+                <a [routerLink]="['/listar-prontuarios', patient.id.toString()]" class="fs-5 my-2">ver mais</a>
             </li>
 
         </ul>
