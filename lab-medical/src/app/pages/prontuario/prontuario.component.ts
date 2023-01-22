@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./prontuario.component.scss']
 })
 export class ProntuarioComponent {
-
+  placeholder: string = "placeholder"
 }

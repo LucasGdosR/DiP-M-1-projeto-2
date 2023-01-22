@@ -1,1 +1,21 @@
-<p>prontuario works!</p>
+<app-template>
+    <main class="container">
+        <h1 class="fs-3 row m-3">Paciente {{ placeholder }}</h1>
+        <p class="row mx-3">Convênio: {{ placeholder }}</p>
+        <p *ngIf="placeholder" class="row mx-3">Alergias: {{ placeholder }}</p>
+        <p *ngIf="placeholder" class="row mx-3">Cuidados especiais: {{ placeholder }}</p>
+
+        <ul class="container list-unstyled">
+           <li *ngFor="let consulta of placeholder">
+
+           </li> 
+        </ul>
+        
+        <ul class="container list-unstyled">
+            <li *ngFor="let exame of placeholder">
+ 
+            </li> 
+         </ul>
+
+    </main>
+</app-template>
