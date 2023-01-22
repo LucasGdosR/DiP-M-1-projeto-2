@@ -16,6 +16,7 @@ import { CadastrarExameComponent } from './pages/cadastrar-exame/cadastrar-exame
 import { PatientSearchComponent } from './components/patient-search/patient-search.component';
 import { ListarProntuariosComponent } from './pages/listar-prontuarios/listar-prontuarios.component';
 import { IdPipe } from './pipes/id.pipe';
+import { ProntuarioComponent } from './pages/prontuario/prontuario.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { IdPipe } from './pipes/id.pipe';
     CadastrarExameComponent,
     PatientSearchComponent,
     ListarProntuariosComponent,
-    IdPipe
+    IdPipe,
+    ProntuarioComponent
   ],
   imports: [
     BrowserModule,
