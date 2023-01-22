@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import Appointment from 'src/app/interfaces/appointment.interface';
 import Exam from 'src/app/interfaces/exam.interface';
 import Patient from 'src/app/interfaces/patient.interface';
@@ -9,18 +10,33 @@ import { DatabaseService } from 'src/app/services/database.service';
   templateUrl: './prontuario.component.html',
   styleUrls: ['./prontuario.component.scss']
 })
-export class ProntuarioComponent {
-  patientId!: number
-  patient: Patient | undefined = this.database.patients.find(patient => patient.id === this.patientId)
-  patientName: string = this.patient!.nomeCompleto
-  insurance: string = this.patient?.convenio ? this.patient.convenio : "Não Possui"
-  emergencyContact: string = this.patient!.contatoDeEmergencia
-  allergyList: string | undefined = this.patient?.listaDeAlergias
-  careList: string | undefined = this.patient?.listaDeCuidadosEspecificos
+export class ProntuarioComponent implements OnInit {
+  patientId!: any
+  patient!: Patient | undefined
+  patientName!: string
+  insurance!: string
+  emergencyContact!: string
+  allergyList?: string | undefined
+  careList?: string | undefined
   
-  appointments: Appointment[] = this.database.appointments.filter(appointment => appointment.idDoPaciente === this.patientId)
-  exams: Exam[] = this.database.exams.filter(exam => exam.idDoPaciente === this.patientId)
+  appointments!: Appointment[]
+  exams!: Exam[]
   
-  constructor(private database: DatabaseService) {}
+  constructor(private database: DatabaseService, private route: ActivatedRoute, private router: Router) {}
   
+  ngOnInit(): void {
+    this.patientId = this.route.snapshot.paramMap.get('id')
+    this.patient = this.database.patients.find(patient => patient.id == this.patientId)
+    console.log(this.patient)
+    this.patientName = this.patient!.nomeCompleto
+    this.insurance = this.patient?.convenio ? this.patient.convenio : "Sem Plano"
+    this.emergencyContact = this.patient!.contatoDeEmergencia
+    this.allergyList = this.patient?.listaDeAlergias
+    this.careList = this.patient?.listaDeCuidadosEspecificos
+  
+    this.appointments = this.database.appointments.filter(appointment => appointment.idDoPaciente === this.patientId)
+    this.exams = this.database.exams.filter(exam => exam.idDoPaciente === this.patientId)
+  }
+  
+
 }
