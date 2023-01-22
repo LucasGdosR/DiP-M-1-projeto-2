@@ -1,18 +1,21 @@
 <app-template>
     <main class="container">
-        <h1 class="fs-3 row m-3">Paciente {{ placeholder }}</h1>
-        <p class="row mx-3">Convênio: {{ placeholder }}</p>
-        <p *ngIf="placeholder" class="row mx-3">Alergias: {{ placeholder }}</p>
-        <p *ngIf="placeholder" class="row mx-3">Cuidados especiais: {{ placeholder }}</p>
+        <h1 class="fs-4 row m-3">Paciente {{ patientName }}</h1>
+        <p class="fs-5 row mx-3">Convênio: {{ insurance }}</p>
+        <p class="fs-5 row mx-3">Contato de Emergência: {{ emergencyContact }}</p>
+        <p *ngIf="allergyList" class="row mx-3">Alergias: {{ allergyList }}</p>
+        <p *ngIf="careList" class="row mx-3">Cuidados especiais: {{ careList }}</p>
 
         <ul class="container list-unstyled">
-           <li *ngFor="let consulta of placeholder">
+            <h2 class="row mx-3 fs-5">Consultas</h2>
+            <li *ngFor="let appointment of appointments" class="row m-3 border">
 
-           </li> 
+            </li> 
         </ul>
         
         <ul class="container list-unstyled">
-            <li *ngFor="let exame of placeholder">
+            <h2 class="row mx-3 fs-5">Exames</h2>
+            <li *ngFor="let exam of exams">
  
             </li> 
          </ul>
