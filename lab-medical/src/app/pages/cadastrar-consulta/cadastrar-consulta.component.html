@@ -1,43 +1,41 @@
-<app-template>
-    <div class="container">
-        <app-patient-search (searchEmitter)="enableForm($event)"></app-patient-search>
+<div class="container">
+    <app-patient-search (searchEmitter)="enableForm($event)"></app-patient-search>
 
-        <form ngNativeValidate #appointmentForm="ngForm" (ngSubmit)="registerAppointment(appointmentForm)" class="row mx-3 border rounded">
-            <h3 class="my-2 col-4 fs-4">Consulta de {{ patientFullName }}</h3>
-            <button class="my-2 col-2 btn btn-outline-secondary" name="edit" id="edit">Editar</button>
-            <button class="my-2 offset-md-1 col-2 btn btn-outline-danger fw-bold">Deletar</button>
-            <input type="submit" class="my-2 offset-md-1 col-2 btn btn-primary" value="Salvar">
-                
-            <div class="col-6 form-floating my-2">
-                <input [(ngModel)]="appointmentMotive" class="form-control" type="text" id="appointmentMotive" name="appointmentMotive" required [disabled]="!formEnabled" minlength="8" maxlength="64">
-                <label for="appointmentMotive">Motivo da Consulta</label>
-            </div>
+    <form ngNativeValidate #appointmentForm="ngForm" (ngSubmit)="registerAppointment(appointmentForm)" class="row mx-3 border rounded">
+        <h3 class="my-2 col-4 fs-4">Consulta de {{ patientFullName }}</h3>
+        <button class="my-2 col-2 btn btn-outline-secondary" name="edit" id="edit">Editar</button>
+        <button class="my-2 offset-md-1 col-2 btn btn-outline-danger fw-bold">Deletar</button>
+        <input type="submit" class="my-2 offset-md-1 col-2 btn btn-primary" value="Salvar">
+            
+        <div class="col-6 form-floating my-2">
+            <input [(ngModel)]="appointmentMotive" class="form-control" type="text" id="appointmentMotive" name="appointmentMotive" required [disabled]="!formEnabled" minlength="8" maxlength="64">
+            <label for="appointmentMotive">Motivo da Consulta</label>
+        </div>
 
-            <div class="col-3 form-floating my-2">
-                <input [(ngModel)]="appointmentDate" class="form-control" type="date" id="appointmentDate" name="appointmentDate" required min="2023-02-05" [disabled]="!formEnabled">
-                <label for="appointmentDate">Data da Consulta</label>
-            </div>
+        <div class="col-3 form-floating my-2">
+            <input [(ngModel)]="appointmentDate" class="form-control" type="date" id="appointmentDate" name="appointmentDate" required min="2023-02-05" [disabled]="!formEnabled">
+            <label for="appointmentDate">Data da Consulta</label>
+        </div>
 
-            <div class="col-3 form-floating my-2">
-                <input [(ngModel)]="appointmentTime" class="form-control" type="datetime-local" id="appointmentTime" name="appointmentTime" required [disabled]="!formEnabled">
-                <label for="appointmentTime">Hora da Consulta</label>
-            </div>
+        <div class="col-3 form-floating my-2">
+            <input [(ngModel)]="appointmentTime" class="form-control" type="datetime-local" id="appointmentTime" name="appointmentTime" required [disabled]="!formEnabled">
+            <label for="appointmentTime">Hora da Consulta</label>
+        </div>
 
-            <div class="col-12 form-floating my-2">
-                <textarea [(ngModel)]="issueDescription" class="form-control" id="issueDescription" name="issueDescription" required [disabled]="!formEnabled" minlength="16" maxlength="1024"></textarea>
-                <label for="issueDescription">Descrição do Problema</label>
-            </div>
+        <div class="col-12 form-floating my-2">
+            <textarea [(ngModel)]="issueDescription" class="form-control" id="issueDescription" name="issueDescription" required [disabled]="!formEnabled" minlength="16" maxlength="1024"></textarea>
+            <label for="issueDescription">Descrição do Problema</label>
+        </div>
 
-            <div class="col-12 form-floating my-2">
-                <textarea [(ngModel)]="prescriptedMedicine" class="form-control" id="prescriptedMedicine" name="prescriptedMedicine" [disabled]="!formEnabled"></textarea>
-                <label for="prescriptedMedicine">Medicação Receitada</label>
-            </div>
+        <div class="col-12 form-floating my-2">
+            <textarea [(ngModel)]="prescriptedMedicine" class="form-control" id="prescriptedMedicine" name="prescriptedMedicine" [disabled]="!formEnabled"></textarea>
+            <label for="prescriptedMedicine">Medicação Receitada</label>
+        </div>
 
-            <div class="col-12 form-floating my-2">
-                <textarea [(ngModel)]="dosageAndPrecautions" class="form-control" id="dosageAndPrecautions" name="dosageAndPrecautions" [disabled]="!formEnabled" required minlength="16" maxlength="256"></textarea>
-                <label for="dosageAndPrecautions">Dosagem e Precauções</label>
-            </div>
+        <div class="col-12 form-floating my-2">
+            <textarea [(ngModel)]="dosageAndPrecautions" class="form-control" id="dosageAndPrecautions" name="dosageAndPrecautions" [disabled]="!formEnabled" required minlength="16" maxlength="256"></textarea>
+            <label for="dosageAndPrecautions">Dosagem e Precauções</label>
+        </div>
 
-        </form>
-    </div>
-</app-template>
+    </form>
+</div>

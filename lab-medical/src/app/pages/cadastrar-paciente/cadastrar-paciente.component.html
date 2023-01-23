@@ -1,170 +1,168 @@
-<app-template>
-    <div class="container">
-        <h2 class="row mx-3 mt-3">Preencha os campos para cadastrar</h2>
-        <form ngNativeValidate #registerForm="ngForm" (ngSubmit)="registerPatient(registerForm)" class="row mx-3 border rounded">
-            <h3 class="my-2 col-4 fs-4">Identificação</h3>
-            <button class="my-2 col-2 btn btn-outline-secondary" name="edit" id="edit">Editar</button>
-            <button class="my-2 offset-md-1 col-2 btn btn-outline-danger fw-bold">Deletar</button>
-            <input type="submit" class="my-2 offset-md-1 col-2 btn btn-primary" value="Salvar">
-            
-            <div class="col-6 form-floating my-2">
-                <input [(ngModel)]="fullName" class="form-control" type="text" id="fullName" name="fullName" required minlength="8" maxlength="64">
-                <label for="fullName">Nome Completo</label>
-            </div>
+<div class="container">
+    <h2 class="row mx-3 mt-3">Preencha os campos para cadastrar</h2>
+    <form ngNativeValidate #registerForm="ngForm" (ngSubmit)="registerPatient(registerForm)" class="row mx-3 border rounded">
+        <h3 class="my-2 col-4 fs-4">Identificação</h3>
+        <button class="my-2 col-2 btn btn-outline-secondary" name="edit" id="edit">Editar</button>
+        <button class="my-2 offset-md-1 col-2 btn btn-outline-danger fw-bold">Deletar</button>
+        <input type="submit" class="my-2 offset-md-1 col-2 btn btn-primary" value="Salvar">
+        
+        <div class="col-6 form-floating my-2">
+            <input [(ngModel)]="fullName" class="form-control" type="text" id="fullName" name="fullName" required minlength="8" maxlength="64">
+            <label for="fullName">Nome Completo</label>
+        </div>
 
-            <div class="col-3 form-floating my-2">
-                <select [(ngModel)]="gender" class="form-control" name="gender" id="gender" required>
-                    <option value="" selected disabled></option>
-                    <option value="male">Masculino</option>
-                    <option value="female">Feminino</option>
-                </select>
-                <label for="gender">Gênero</label>
-            </div>
+        <div class="col-3 form-floating my-2">
+            <select [(ngModel)]="gender" class="form-control" name="gender" id="gender" required>
+                <option value="" selected disabled></option>
+                <option value="male">Masculino</option>
+                <option value="female">Feminino</option>
+            </select>
+            <label for="gender">Gênero</label>
+        </div>
 
-            <div class="col-3 form-floating my-2">
-                <input [(ngModel)]="birthday" class="form-control" type="date" id="birthday" name="birthday" required max="2023-01-26">
-                <label for="birthday">Data Nascimento</label>
-            </div>
+        <div class="col-3 form-floating my-2">
+            <input [(ngModel)]="birthday" class="form-control" type="date" id="birthday" name="birthday" required max="2023-01-26">
+            <label for="birthday">Data Nascimento</label>
+        </div>
 
-            <div class="col-4 form-floating my-2">
-                <input [(ngModel)]="cpf" class="form-control" type="text" id="cpf" name="cpf" required minlength="14" maxlength="14">
-                <label for="cpf">CPF</label>
-            </div>
-            
-            <div class="col-4 form-floating my-2">
-                <input [(ngModel)]="rg" class="form-control" type="text" id="rg" name="rg" required maxlength="20">
-                <label for="rg">RG</label>
-            </div>
+        <div class="col-4 form-floating my-2">
+            <input [(ngModel)]="cpf" class="form-control" type="text" id="cpf" name="cpf" required minlength="14" maxlength="14">
+            <label for="cpf">CPF</label>
+        </div>
+        
+        <div class="col-4 form-floating my-2">
+            <input [(ngModel)]="rg" class="form-control" type="text" id="rg" name="rg" required maxlength="20">
+            <label for="rg">RG</label>
+        </div>
 
-            <div class="col-4 form-floating my-2">
-                <select [(ngModel)]="maritalStatus" class="form-control" name="maritalStatus" id="maritalStatus" name="maritalStatus" required>
-                    <option value="" selected disabled></option>
-                    <option value="single">Solteiro</option>
-                    <option value="married">Casado</option>
-                    <option value="married">Divorciado</option>
-                    <option value="widow">Viúvo</option>
-                </select>
-                <label for="maritalStatus">Estado Civil</label>
-            </div>
-            
-            <div class="col-4 form-floating my-2">
-                <input [(ngModel)]="telephone" class="form-control" type="text" id="telephone" name="telephone" required minlength="16" maxlength="16">
-                <label for="telephone">Telefone</label>
-            </div>
-            
-            <div class="col-4 form-floating my-2">
-                <input [(ngModel)]="email" class="form-control" type="email" id="email" name="email">
-                <label for="email">E-mail</label>
-            </div>
+        <div class="col-4 form-floating my-2">
+            <select [(ngModel)]="maritalStatus" class="form-control" name="maritalStatus" id="maritalStatus" name="maritalStatus" required>
+                <option value="" selected disabled></option>
+                <option value="single">Solteiro</option>
+                <option value="married">Casado</option>
+                <option value="married">Divorciado</option>
+                <option value="widow">Viúvo</option>
+            </select>
+            <label for="maritalStatus">Estado Civil</label>
+        </div>
+        
+        <div class="col-4 form-floating my-2">
+            <input [(ngModel)]="telephone" class="form-control" type="text" id="telephone" name="telephone" required minlength="16" maxlength="16">
+            <label for="telephone">Telefone</label>
+        </div>
+        
+        <div class="col-4 form-floating my-2">
+            <input [(ngModel)]="email" class="form-control" type="email" id="email" name="email">
+            <label for="email">E-mail</label>
+        </div>
 
-            <div class="col-4 form-floating my-2">
-                <input [(ngModel)]="countryOfBirth" class="form-control" type="text" id="countryOfBirth" name="countryOfBirth" required minlength="8" maxlength="64">
-                <label for="countryOfBirth">Naturalidade</label>
-            </div>
+        <div class="col-4 form-floating my-2">
+            <input [(ngModel)]="countryOfBirth" class="form-control" type="text" id="countryOfBirth" name="countryOfBirth" required minlength="8" maxlength="64">
+            <label for="countryOfBirth">Naturalidade</label>
+        </div>
 
-            <div class="col-4 form-floating my-2">
-                <input [(ngModel)]="emergencyContact" class="form-control" type="text" id="emergencyContact" name="emergencyContact" required minlength="16" maxlength="16">
-                <label for="emergencyContact">Contato de Emergência</label>
-            </div>
+        <div class="col-4 form-floating my-2">
+            <input [(ngModel)]="emergencyContact" class="form-control" type="text" id="emergencyContact" name="emergencyContact" required minlength="16" maxlength="16">
+            <label for="emergencyContact">Contato de Emergência</label>
+        </div>
 
-            <div class="col-12 form-floating my-2">
-                <textarea [(ngModel)]="alergyList" class="form-control" id="alergyList" name="alergyList"></textarea>
-                <label for="alergyList">Lista de Alergias</label>
-            </div>
+        <div class="col-12 form-floating my-2">
+            <textarea [(ngModel)]="alergyList" class="form-control" id="alergyList" name="alergyList"></textarea>
+            <label for="alergyList">Lista de Alergias</label>
+        </div>
 
-            <div class="col-12 form-floating my-2">
-                <textarea [(ngModel)]="careList" class="form-control" id="careList" name="careList"></textarea>
-                <label for="careList">Lista de Cuidados</label>
-            </div>
+        <div class="col-12 form-floating my-2">
+            <textarea [(ngModel)]="careList" class="form-control" id="careList" name="careList"></textarea>
+            <label for="careList">Lista de Cuidados</label>
+        </div>
 
-            <h3 class="my-2 col-12 fs-4">Convênio</h3>
+        <h3 class="my-2 col-12 fs-4">Convênio</h3>
 
-            <div class="col-4 form-floating my-2">
-                <input [(ngModel)]="insurance" class="form-control" type="text" id="insurance" name="insurance">
-                <label for="insurance">Convênio</label>
-            </div>
+        <div class="col-4 form-floating my-2">
+            <input [(ngModel)]="insurance" class="form-control" type="text" id="insurance" name="insurance">
+            <label for="insurance">Convênio</label>
+        </div>
 
-            <div class="col-4 form-floating my-2">
-                <input [(ngModel)]="insuranceId" class="form-control" type="number" id="insuranceId" name="insuranceId">
-                <label for="insuranceId">Número da Carteira</label>
-            </div>
+        <div class="col-4 form-floating my-2">
+            <input [(ngModel)]="insuranceId" class="form-control" type="number" id="insuranceId" name="insuranceId">
+            <label for="insuranceId">Número da Carteira</label>
+        </div>
 
-            <div class="col-4 form-floating my-2">
-                <input [(ngModel)]="insuranceExpired" class="form-control" type="date" id="insuranceExpired" name="insuranceExpired">
-                <label for="insuranceExpired">Validade</label>
-            </div>
+        <div class="col-4 form-floating my-2">
+            <input [(ngModel)]="insuranceExpired" class="form-control" type="date" id="insuranceExpired" name="insuranceExpired">
+            <label for="insuranceExpired">Validade</label>
+        </div>
 
 
-            <h3 class="my-2 col-12 fs-4">Dados de Endereço</h3>
+        <h3 class="my-2 col-12 fs-4">Dados de Endereço</h3>
 
-            <div class="col-4 form-floating my-2">
-                <input [(ngModel)]="cep" class="form-control" type="text" id="cep" name="cep" required>
-                <label for="cep">CEP</label>
-            </div>
-            
-            <div class="col-6 form-floating my-2">
-                <input [(ngModel)]="city" class="form-control" type="text" id="city" name="city" required>
-                <label for="city">Cidade</label>
-            </div>
+        <div class="col-4 form-floating my-2">
+            <input [(ngModel)]="cep" class="form-control" type="text" id="cep" name="cep" required>
+            <label for="cep">CEP</label>
+        </div>
+        
+        <div class="col-6 form-floating my-2">
+            <input [(ngModel)]="city" class="form-control" type="text" id="city" name="city" required>
+            <label for="city">Cidade</label>
+        </div>
 
-            <div class="col-2 form-floating my-2">
-                <select [(ngModel)]="state" class="form-control" name="state" id="state" name="state" required>
-                    <option value=""></option>
-                    <option value="AC">AC</option>
-                    <option value="AL">AL</option>
-                    <option value="AM">AM</option>
-                    <option value="BA">BA</option>
-                    <option value="CE">CE</option>
-                    <option value="DF">DF</option>
-                    <option value="ES">ES</option>
-                    <option value="GO">GO</option>
-                    <option value="MA">MA</option>
-                    <option value="MG">MG</option>
-                    <option value="MS">MS</option>
-                    <option value="MT">MT</option>
-                    <option value="PA">PA</option>
-                    <option value="PB">PB</option>
-                    <option value="PE">PE</option>
-                    <option value="PI">PI</option>
-                    <option value="PR">PR</option>
-                    <option value="RJ">RJ</option>
-                    <option value="RN">RN</option>
-                    <option value="RO">RO</option>
-                    <option value="RR">RR</option>
-                    <option value="RS">RS</option>
-                    <option value="SC">SC</option>
-                    <option value="SE">SE</option>
-                    <option value="SP">SP</option>
-                    <option value="TO">TO</option>
-                </select>
-                <label for="state">UF</label>
-            </div>
+        <div class="col-2 form-floating my-2">
+            <select [(ngModel)]="state" class="form-control" name="state" id="state" name="state" required>
+                <option value=""></option>
+                <option value="AC">AC</option>
+                <option value="AL">AL</option>
+                <option value="AM">AM</option>
+                <option value="BA">BA</option>
+                <option value="CE">CE</option>
+                <option value="DF">DF</option>
+                <option value="ES">ES</option>
+                <option value="GO">GO</option>
+                <option value="MA">MA</option>
+                <option value="MG">MG</option>
+                <option value="MS">MS</option>
+                <option value="MT">MT</option>
+                <option value="PA">PA</option>
+                <option value="PB">PB</option>
+                <option value="PE">PE</option>
+                <option value="PI">PI</option>
+                <option value="PR">PR</option>
+                <option value="RJ">RJ</option>
+                <option value="RN">RN</option>
+                <option value="RO">RO</option>
+                <option value="RR">RR</option>
+                <option value="RS">RS</option>
+                <option value="SC">SC</option>
+                <option value="SE">SE</option>
+                <option value="SP">SP</option>
+                <option value="TO">TO</option>
+            </select>
+            <label for="state">UF</label>
+        </div>
 
-            <div class="col-10 form-floating my-2">
-                <input [(ngModel)]="street" class="form-control" type="text" id="street" name="street" required>
-                <label for="street">Logradouro</label>
-            </div>
+        <div class="col-10 form-floating my-2">
+            <input [(ngModel)]="street" class="form-control" type="text" id="street" name="street" required>
+            <label for="street">Logradouro</label>
+        </div>
 
-            <div class="col-2 form-floating my-2">
-                <input [(ngModel)]="streetNumber" class="form-control" type="number" id="streetNumber" name="streetNumber" required>
-                <label for="streetNumber">Número</label>
-            </div>
+        <div class="col-2 form-floating my-2">
+            <input [(ngModel)]="streetNumber" class="form-control" type="number" id="streetNumber" name="streetNumber" required>
+            <label for="streetNumber">Número</label>
+        </div>
 
-            <div class="col-4 form-floating mt-2 mb-3">
-                <input [(ngModel)]="complement" class="form-control" type="text" id="complement" name="complement">
-                <label for="complement">Complemento</label>
-            </div>
-            
-            <div class="col-4 form-floating mt-2 mb-3">
-                <input [(ngModel)]="neighborhood" class="form-control" type="text" id="neighborhood" name="neighborhood" required>
-                <label for="neighborhood">Bairro</label>
-            </div>
+        <div class="col-4 form-floating mt-2 mb-3">
+            <input [(ngModel)]="complement" class="form-control" type="text" id="complement" name="complement">
+            <label for="complement">Complemento</label>
+        </div>
+        
+        <div class="col-4 form-floating mt-2 mb-3">
+            <input [(ngModel)]="neighborhood" class="form-control" type="text" id="neighborhood" name="neighborhood" required>
+            <label for="neighborhood">Bairro</label>
+        </div>
 
-            <div class="col-4 form-floating mt-2 mb-3">
-                <input [(ngModel)]="reference" class="form-control" type="text" id="reference" name="reference">
-                <label for="reference">Ponto de Referência</label>
-            </div>
-            
-        </form>
-    </div>
-</app-template>
+        <div class="col-4 form-floating mt-2 mb-3">
+            <input [(ngModel)]="reference" class="form-control" type="text" id="reference" name="reference">
+            <label for="reference">Ponto de Referência</label>
+        </div>
+        
+    </form>
+</div>

@@ -1,48 +1,46 @@
-<app-template>
-    <div class="container">
-        <app-patient-search (searchEmitter)="enableForm($event)"></app-patient-search>
+<div class="container">
+    <app-patient-search (searchEmitter)="enableForm($event)"></app-patient-search>
 
-        <form ngNativeValidate #examForm="ngForm" (ngSubmit)="registerExam(examForm)" class="row mx-3 border rounded">
-            <h3 class="my-2 col-4 fs-4">Exame de {{ patientFullName }}</h3>
-            <button class="my-2 col-2 btn btn-outline-secondary" name="edit" id="edit">Editar</button>
-            <button class="my-2 offset-md-1 col-2 btn btn-outline-danger fw-bold">Deletar</button>
-            <input type="submit" class="my-2 offset-md-1 col-2 btn btn-primary" value="Salvar">
-                
-            <div class="col-6 form-floating my-2">
-                <input [(ngModel)]="examName" class="form-control" type="text" id="examName" name="examName" required [disabled]="!formEnabled" minlength="8" maxlength="64">
-                <label for="examName">Nome do Exame</label>
-            </div>
+    <form ngNativeValidate #examForm="ngForm" (ngSubmit)="registerExam(examForm)" class="row mx-3 border rounded">
+        <h3 class="my-2 col-4 fs-4">Exame de {{ patientFullName }}</h3>
+        <button class="my-2 col-2 btn btn-outline-secondary" name="edit" id="edit">Editar</button>
+        <button class="my-2 offset-md-1 col-2 btn btn-outline-danger fw-bold">Deletar</button>
+        <input type="submit" class="my-2 offset-md-1 col-2 btn btn-primary" value="Salvar">
+            
+        <div class="col-6 form-floating my-2">
+            <input [(ngModel)]="examName" class="form-control" type="text" id="examName" name="examName" required [disabled]="!formEnabled" minlength="8" maxlength="64">
+            <label for="examName">Nome do Exame</label>
+        </div>
 
-            <div class="col-3 form-floating my-2">
-                <input [(ngModel)]="examDate" class="form-control" type="date" id="examDate" name="examDate" required min="2023-02-05" [disabled]="!formEnabled">
-                <label for="examDate">Data do Exame</label>
-            </div>
+        <div class="col-3 form-floating my-2">
+            <input [(ngModel)]="examDate" class="form-control" type="date" id="examDate" name="examDate" required min="2023-02-05" [disabled]="!formEnabled">
+            <label for="examDate">Data do Exame</label>
+        </div>
 
-            <div class="col-3 form-floating my-2">
-                <input [(ngModel)]="examTime" class="form-control" type="datetime-local" id="examTime" name="examTime" required [disabled]="!formEnabled">
-                <label for="examTime">Hora do Exame</label>
-            </div>
+        <div class="col-3 form-floating my-2">
+            <input [(ngModel)]="examTime" class="form-control" type="datetime-local" id="examTime" name="examTime" required [disabled]="!formEnabled">
+            <label for="examTime">Hora do Exame</label>
+        </div>
 
-            <div class="col-6 form-floating my-2">
-                <input [(ngModel)]="examType" class="form-control" type="text" id="examType" name="examType" required [disabled]="!formEnabled" minlength="4" maxlength="32">
-                <label for="examType">Tipo de Exame</label>
-            </div>
+        <div class="col-6 form-floating my-2">
+            <input [(ngModel)]="examType" class="form-control" type="text" id="examType" name="examType" required [disabled]="!formEnabled" minlength="4" maxlength="32">
+            <label for="examType">Tipo de Exame</label>
+        </div>
 
-            <div class="col-6 form-floating my-2">
-                <input [(ngModel)]="laboratory" class="form-control" type="text" id="laboratory" name="laboratory" required [disabled]="!formEnabled" minlength="4" maxlength="32">
-                <label for="laboratory">Laboratório</label>
-            </div>
+        <div class="col-6 form-floating my-2">
+            <input [(ngModel)]="laboratory" class="form-control" type="text" id="laboratory" name="laboratory" required [disabled]="!formEnabled" minlength="4" maxlength="32">
+            <label for="laboratory">Laboratório</label>
+        </div>
 
-            <div class="col-12 form-floating my-2">
-                <input [(ngModel)]="url" class="form-control" type="url" pattern="https://.*" id="url" name="url" [disabled]="!formEnabled">
-                <label for="url">URL do Documento do Exame</label>
-            </div>
+        <div class="col-12 form-floating my-2">
+            <input [(ngModel)]="url" class="form-control" type="url" pattern="https://.*" id="url" name="url" [disabled]="!formEnabled">
+            <label for="url">URL do Documento do Exame</label>
+        </div>
 
-            <div class="col-12 form-floating my-2">
-                <textarea [(ngModel)]="results" class="form-control" type="text" id="results" name="results" required [disabled]="!formEnabled" minlength="16" maxlength="1024"></textarea>
-                <label for="results">Resultados</label>
-            </div>
+        <div class="col-12 form-floating my-2">
+            <textarea [(ngModel)]="results" class="form-control" type="text" id="results" name="results" required [disabled]="!formEnabled" minlength="16" maxlength="1024"></textarea>
+            <label for="results">Resultados</label>
+        </div>
 
-        </form>
-    </div>
-</app-template>
+    </form>
+</div>
