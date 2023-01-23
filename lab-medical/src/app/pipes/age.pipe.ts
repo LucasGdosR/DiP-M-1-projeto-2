@@ -5,15 +5,29 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class AgePipe implements PipeTransform {
 
-  transform(dataDeNascimento: Date): string {
+  transform(dataDeNascimento: string): string {
     const today = new Date()
-    let age = today.getFullYear() - dataDeNascimento.getFullYear()
-    const monthDifference = today.getMonth() - dataDeNascimento.getMonth()
 
-    if (monthDifference < 0 || monthDifference === 0 && today.getDate() < dataDeNascimento.getDate())
+    let age = today.getFullYear() - this.getFullYear(dataDeNascimento)
+    
+    const monthDifference = today.getMonth() - this.getMonth(dataDeNascimento)
+    
+    if (monthDifference < 0 || monthDifference === 0 && today.getDate() < this.getDate(dataDeNascimento))
       age--
-      
-    return age + " Anos";
+    
+    return age + " Anos"
+  }
+
+  getFullYear(dataDeNascimento: string): number {
+    return parseInt(dataDeNascimento.slice(0, 4))
+  }
+
+  getMonth(dataDeNascimento: string): number {
+    return parseInt(dataDeNascimento.slice(5, 7)) - 1
+  }
+
+  getDate(dataDeNascimento: string): number {
+    return parseInt(dataDeNascimento.slice(8))
   }
 
 }

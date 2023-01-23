@@ -4,7 +4,7 @@ export default interface Patient {
     id: number;
     nomeCompleto: string;
     genero: string;
-    dataDeNascimento: Date;
+    dataDeNascimento: string;
     cpf: string;
     rg: string;
     estadoCivil: string;
