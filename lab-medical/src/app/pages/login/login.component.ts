@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     const users = localStorage.getItem('users')
-    this.users = users ? JSON.parse(users) : {}
+    this.users = users ? JSON.parse(users) : { 'medico@philips.com': 'medico123' }
   }
 
   notImplemented(){
