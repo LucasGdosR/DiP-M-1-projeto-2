@@ -8,14 +8,30 @@
     <ul class="container list-unstyled">
         <h2 class="row mx-3 fs-5">Consultas</h2>
         <li *ngFor="let appointment of appointments" class="row m-3 border">
-
+            <h3 class="col-12">Motivo da Consulta: {{ appointment.motivo }}</h3>
+            <h4 class="col-6">Data: {{ appointment.dataDaConsulta }}</h4>
+            <h4 class="col-6">Hora: {{ appointment.horario }}</h4>
+            <p class="col-4">ID da Consulta: {{ appointment.idDaConsulta }}</p>
+            <p class="col-4">Descrição: {{ appointment.descricao }}</p>
+            <p *ngIf="appointment.medicacao" class="col-4">Medicação: {{ appointment?.medicacao }}</p>
+            <p class="col-4">Dosagem e Precauções: {{ appointment.dosagemEPrecaucoes }}</p>
+            <button class="btn button-warning col-3">Editar</button>
         </li> 
     </ul>
     
     <ul class="container list-unstyled">
         <h2 class="row mx-3 fs-5">Exames</h2>
-        <li *ngFor="let exam of exams">
-
+        <li *ngFor="let exam of exams" class="row m-3 border">
+            <h4 class="col-6">Nome do Exame: {{ exam.nome }}</h4>
+            <h4 class="col-6">Laboratório: {{ exam.laboratorio }}</h4>
+            <h5 class="col-4">Data: {{ exam.dataDoExame }}</h5>
+            <h5 class="col-4">Hora: {{ exam.horario }}</h5>
+            <h5 class="col-4">Anexo: placeholder</h5>
+            <p class="col-4">ID do Exame: {{ exam.idDoExame }}</p>
+            <p class="col-4">Tipo: {{ exam.tipoDoExame }}</p>
+            <p class="col-4">Resultados: {{ exam.resultados }}</p>
+            <p *ngIf="exam.url" class="col-12">URL: {{ exam.url }}</p>
+            <button class="btn button-warning col-3">Editar</button>
         </li> 
         </ul>
 
