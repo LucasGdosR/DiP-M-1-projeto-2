@@ -121,4 +121,43 @@ export class CadastrarPacienteComponent {
     alert("Telefone apenas no formato (XX) 9 XXXX-XXXX.")
     return false
   }
+
+  getAddress() {
+    const cep = this.cep.replace(/\D/g, '')
+
+    if (cep != '') {
+      const re = /^[0-9]{8}$/
+      if (re.test(cep)) {
+        this.street = "..."
+        this.neighborhood = "..."
+        this.city = "..."
+        this.state = "..."
+
+        const useAPI = async() => {
+          const resposta = await fetch('https://viacep.com.br/ws/'+ cep + '/json/')
+          const conteudo = await resposta.json()
+
+          if (!("erro" in conteudo)) {
+            this.street = conteudo.logradouro
+            this.neighborhood = conteudo.bairro
+            this.city = conteudo.localidade
+            this.state = conteudo.uf
+          }
+          
+          else {
+            this.street = ""
+            this.neighborhood = ""
+            this.city = ""
+            this.state = ""
+            alert("CEP não encontrado.")
+          }
+        }
+
+        useAPI()
+      }
+      else {
+        alert("Formato de CEP inválido.")
+      }
+    }
+  }
 }
