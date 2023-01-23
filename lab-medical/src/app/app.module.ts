@@ -8,7 +8,6 @@ import { LoginComponent } from './pages/login/login.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
-import { TemplateComponent } from './components/template/template.component';
 import { AgePipe } from './pipes/age.pipe';
 import { CadastrarPacienteComponent } from './pages/cadastrar-paciente/cadastrar-paciente.component';
 import { CadastrarConsultaComponent } from './pages/cadastrar-consulta/cadastrar-consulta.component';
@@ -25,7 +24,6 @@ import { ProntuarioComponent } from './pages/prontuario/prontuario.component';
     MenuComponent,
     ToolbarComponent,
     InicioComponent,
-    TemplateComponent,
     AgePipe,
     CadastrarPacienteComponent,
     CadastrarConsultaComponent,
