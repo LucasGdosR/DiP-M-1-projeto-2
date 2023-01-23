@@ -95,9 +95,9 @@
 
 
         <h3 class="my-2 col-12 fs-4">Dados de Endereço</h3>
-
+        
         <div class="col-4 form-floating my-2">
-            <input [(ngModel)]="cep" class="form-control" type="text" id="cep" name="cep" required>
+            <input [(ngModel)]="cep" class="form-control" type="text" id="cep" name="cep" required (blur)="getAddress()">
             <label for="cep">CEP</label>
         </div>
         
