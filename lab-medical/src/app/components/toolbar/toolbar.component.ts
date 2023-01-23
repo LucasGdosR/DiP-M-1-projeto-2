@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { CurrentPageService } from 'src/app/services/current-page.service';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -7,18 +7,8 @@ import { LoginService } from 'src/app/services/login.service';
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']
 })
-export class ToolbarComponent implements OnInit {
-  user!: string
-  pageTitle!: string
+export class ToolbarComponent {
 
-  constructor(private loginService : LoginService, private route: ActivatedRoute, private router: Router){}
-  
-  ngOnInit(): void {
-    this.user = this.loginService.user
-    this.pageTitle = this.route.snapshot.title!
-  }
-
-
-  
+  constructor(public loginService : LoginService, public currentPage: CurrentPageService) {}
   
 }

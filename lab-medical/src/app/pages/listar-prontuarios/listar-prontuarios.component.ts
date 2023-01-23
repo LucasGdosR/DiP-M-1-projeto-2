@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { CurrentPageService } from 'src/app/services/current-page.service';
 import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
@@ -8,7 +9,9 @@ import { DatabaseService } from 'src/app/services/database.service';
   styleUrls: ['./listar-prontuarios.component.scss']
 })
 export class ListarProntuariosComponent {
-  constructor(private database: DatabaseService, private router: Router) {}
+  constructor(private database: DatabaseService, private router: Router, private currentPage: CurrentPageService) {
+    this.currentPage.currentPageTitle = 'LISTAGEM E PRONTUÁRIOS'
+  }
 
   filteredPatients = this.database.patients
   nomeBuscado : string = ""

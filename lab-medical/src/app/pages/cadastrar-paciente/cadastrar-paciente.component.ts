@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import Address from 'src/app/interfaces/address.interface';
 import Patient from 'src/app/interfaces/patient.interface';
+import { CurrentPageService } from 'src/app/services/current-page.service';
 import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
@@ -12,7 +13,7 @@ import { DatabaseService } from 'src/app/services/database.service';
 export class CadastrarPacienteComponent {
   fullName: string = ""
   gender: string = ""
-  birthday: Date = new Date()
+  birthday: string = ""
   cpf: string = ""
   rg: string = ""
   maritalStatus: string = ""
@@ -38,7 +39,9 @@ export class CadastrarPacienteComponent {
   neighborhood: string = ""
   reference: string = ""
   
-  constructor(public database: DatabaseService) {}
+  constructor(public database: DatabaseService, private currentPage: CurrentPageService) {
+    this.currentPage.currentPageTitle = 'CADASTRO DE PACIENTE'
+  }
   
   registerPatient(form: NgForm) {
 
@@ -97,10 +100,10 @@ export class CadastrarPacienteComponent {
     return true
     
     // Esta comparação não funciona
-    if (this.birthday < new Date())
-      return true
-    alert("Não é possível nascer no futuro!")
-    return false
+    // if (this.birthday < new Date())
+    //   return true
+    // alert("Não é possível nascer no futuro!")
+    // return false
   }
 
   validateCPF(): boolean {

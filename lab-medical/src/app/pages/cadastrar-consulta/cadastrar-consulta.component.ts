@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import Appointment from 'src/app/interfaces/appointment.interface';
 import Patient from 'src/app/interfaces/patient.interface';
+import { CurrentPageService } from 'src/app/services/current-page.service';
 import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
@@ -11,7 +12,9 @@ import { DatabaseService } from 'src/app/services/database.service';
   styleUrls: ['./cadastrar-consulta.component.scss']
 })
 export class CadastrarConsultaComponent {
-  constructor(private database: DatabaseService) {}
+  constructor(private database: DatabaseService, private currentPage: CurrentPageService) {
+    currentPage.currentPageTitle = 'CADASTRO DE CONSULTA'
+  }
 
   formEnabled: boolean = false
   patientId!: number

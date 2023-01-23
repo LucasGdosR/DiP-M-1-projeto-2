@@ -10,12 +10,12 @@ import { ProntuarioComponent } from './pages/prontuario/prontuario.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'inicio', component: InicioComponent, title: 'ESTATÍSTICAS E INFORMAÇÕES' },
-  { path: 'cadastrar-paciente', component: CadastrarPacienteComponent, title: 'CADASTRO DE PACIENTE' },
-  { path: 'cadastrar-consulta', component: CadastrarConsultaComponent, title: 'CADASTRO DE CONSULTA' },
-  { path: 'cadastrar-exame', component: CadastrarExameComponent, title: 'CADASTRO DE EXAME' },
-  { path: 'listar-prontuarios', component: ListarProntuariosComponent, title: 'LISTAGEM DE PRONTUÁRIOS'},
-  { path: 'listar-prontuarios/:id', component: ProntuarioComponent, title: 'PRONTUÁRIO DE PACIENTE' },
+  { path: 'inicio', component: InicioComponent },
+  { path: 'cadastrar-paciente', component: CadastrarPacienteComponent },
+  { path: 'cadastrar-consulta', component: CadastrarConsultaComponent },
+  { path: 'cadastrar-exame', component: CadastrarExameComponent},
+  { path: 'listar-prontuarios', component: ListarProntuariosComponent},
+  { path: 'listar-prontuarios/:id', component: ProntuarioComponent },
   { path: '**', redirectTo: '/inicio', pathMatch: 'full' }
 ];
 

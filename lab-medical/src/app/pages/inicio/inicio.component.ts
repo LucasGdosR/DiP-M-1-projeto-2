@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CurrentPageService } from 'src/app/services/current-page.service';
 import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
@@ -7,7 +8,9 @@ import { DatabaseService } from 'src/app/services/database.service';
   styleUrls: ['./inicio.component.scss']
 })
 export class InicioComponent {
-  constructor(private database: DatabaseService) {}
+  constructor(private database: DatabaseService, private currentPage: CurrentPageService) {
+    this.currentPage.currentPageTitle = 'ESTATÍSTICAS E INFORMAÇÕES'
+  }
 
   filteredPatients = this.database.patients
   nomeBuscado : string = ""

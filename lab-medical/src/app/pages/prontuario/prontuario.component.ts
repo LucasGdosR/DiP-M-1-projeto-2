@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import Appointment from 'src/app/interfaces/appointment.interface';
 import Exam from 'src/app/interfaces/exam.interface';
 import Patient from 'src/app/interfaces/patient.interface';
+import { CurrentPageService } from 'src/app/services/current-page.service';
 import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
@@ -22,12 +23,13 @@ export class ProntuarioComponent implements OnInit {
   appointments!: Appointment[]
   exams!: Exam[]
   
-  constructor(private database: DatabaseService, private route: ActivatedRoute, private router: Router) {}
+  constructor(private database: DatabaseService, private route: ActivatedRoute, private router: Router, private currentPage: CurrentPageService) {
+    this.currentPage.currentPageTitle = 'PRONTUÁRIO DE PACIENTE'
+  }
   
   ngOnInit(): void {
     this.patientId = this.route.snapshot.paramMap.get('id')
     this.patient = this.database.patients.find(patient => patient.id == this.patientId)
-    console.log(this.patient)
     this.patientName = this.patient!.nomeCompleto
     this.insurance = this.patient?.convenio ? this.patient.convenio : "Sem Plano"
     this.emergencyContact = this.patient!.contatoDeEmergencia
