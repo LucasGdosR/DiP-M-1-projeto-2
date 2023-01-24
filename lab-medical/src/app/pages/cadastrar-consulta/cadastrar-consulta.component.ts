@@ -1,6 +1,7 @@
 import { Time } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import Appointment from 'src/app/interfaces/appointment.interface';
 import Patient from 'src/app/interfaces/patient.interface';
 import { CurrentPageService } from 'src/app/services/current-page.service';
@@ -11,10 +12,9 @@ import { DatabaseService } from 'src/app/services/database.service';
   templateUrl: './cadastrar-consulta.component.html',
   styleUrls: ['./cadastrar-consulta.component.scss']
 })
-export class CadastrarConsultaComponent {
-  constructor(private database: DatabaseService, private currentPage: CurrentPageService) {
-    currentPage.currentPageTitle = 'CADASTRO DE CONSULTA'
-  }
+export class CadastrarConsultaComponent implements OnInit {
+  appointmentId: any
+  searchEnabled: boolean = true
 
   formEnabled: boolean = false
   patientId!: number
@@ -27,6 +27,30 @@ export class CadastrarConsultaComponent {
   prescriptedMedicine?: string
   dosageAndPrecautions: string = ""
 
+  constructor(private database: DatabaseService, private route: ActivatedRoute, private router: Router, private currentPage: CurrentPageService) {
+    currentPage.currentPageTitle = 'CADASTRO DE CONSULTA'
+  }
+
+  ngOnInit(): void {
+    this.appointmentId = this.route.snapshot.paramMap.get('id')
+
+    if (this.appointmentId >= 0) {
+      this.searchEnabled = false
+      
+      const appointment = this.database.appointments.find(appointment => appointment.idDaConsulta == this.appointmentId)!
+      
+      const patient = this.database.patients.find(patient => patient.id == appointment!.idDoPaciente)
+      this.enableForm(patient!)
+
+      this.appointmentMotive = appointment.motivo
+      this.appointmentDate = appointment.dataDaConsulta
+      this.appointmentTime = appointment.horario
+      this.issueDescription = appointment.descricao
+      this.prescriptedMedicine = appointment.medicacao
+      this.dosageAndPrecautions = appointment.dosagemEPrecaucoes
+    }
+  }
+
   enableForm(foundPatient: Patient) {
     this.formEnabled = true
     this.patientId = foundPatient.id
@@ -34,9 +58,11 @@ export class CadastrarConsultaComponent {
   }
 
   registerAppointment(form: NgForm) {
+    const id = (this.appointmentId >= 0) ? this.appointmentId : this.database.nextAppointmentID++
+
     const appointment: Appointment = {
       idDoPaciente: this.patientId,
-      idDaConsulta: this.database.nextAppointmentID++,
+      idDaConsulta: id,
       motivo: this.appointmentMotive,
       dataDaConsulta: this.appointmentDate,
       horario: this.appointmentTime,
@@ -45,11 +71,26 @@ export class CadastrarConsultaComponent {
       dosagemEPrecaucoes: this.dosageAndPrecautions
     }
 
-    this.database.appointments.push(appointment)
-    form.reset()
-    this.database.persist('appointments', this.database.appointments)
-    this.database.persist('nextAppointmentID', this.database.nextAppointmentID)
+    if (this.appointmentId == -1) {
+      this.database.appointments.push(appointment)
+      this.database.persist('nextAppointmentID', this.database.nextAppointmentID)
+    }
 
-    alert("Consulta agendada com sucesso.")
+    else this.database.appointments[this.getAppointmentIndex()] = appointment
+    
+    form.reset()
+    
+    this.database.persist('appointments', this.database.appointments)
+    alert("Operação realizada com sucesso.")
+  }
+
+  getAppointmentIndex(): number {
+    return this.database.appointments.findIndex(appointment => appointment.idDaConsulta == this.appointmentId)
+  }
+
+  delete() {
+    this.database.appointments.splice(this.getAppointmentIndex(), 1)
+    this.database.persist('appointments', this.database.appointments)
+    alert("Operação realizada com sucesso!")
   }
 }
