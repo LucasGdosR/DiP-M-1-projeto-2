@@ -1,6 +1,7 @@
 import { Time } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import Exam from 'src/app/interfaces/exam.interface';
 import Patient from 'src/app/interfaces/patient.interface';
 import { CurrentPageService } from 'src/app/services/current-page.service';
@@ -11,15 +12,14 @@ import { DatabaseService } from 'src/app/services/database.service';
   templateUrl: './cadastrar-exame.component.html',
   styleUrls: ['./cadastrar-exame.component.scss']
 })
-export class CadastrarExameComponent {
-  constructor(private database: DatabaseService, private currentPage: CurrentPageService) {
-    this.currentPage.currentPageTitle = 'CADASTRO DE EXAME'
-  }
+export class CadastrarExameComponent implements OnInit {
+  examId: any
+  searchEnabled: boolean = true
 
   formEnabled: boolean = false
   patientId!: number
   patientFullName: string = ""
-
+  
   examName: string = ""
   examDate: Date = new Date()
   examTime: Time = {hours: 8, minutes: 0}
@@ -27,6 +27,31 @@ export class CadastrarExameComponent {
   laboratory: string = ""
   url?: string
   results: string = ""
+  
+  constructor(private database: DatabaseService, private route: ActivatedRoute, private router: Router, private currentPage: CurrentPageService) {
+    this.currentPage.currentPageTitle = 'CADASTRO DE EXAME'
+  }
+
+  ngOnInit(): void {
+    this.examId = this. route.snapshot.paramMap.get('id')
+
+    if (this.examId >= 0) {
+      this.searchEnabled = false
+
+      const exam = this.database.exams.find(exam => exam.idDoExame == this.examId)!
+
+      const patient = this.database.patients.find(patient => patient.id == exam.idDoPaciente)
+      this.enableForm(patient!)
+
+      this.examName = exam.nome
+      this.examDate = exam.dataDoExame
+      this.examTime = exam.horario
+      this.examType = exam.tipoDoExame
+      this.laboratory = exam.laboratorio
+      this.url = exam.url
+      this.results = exam.resultados
+    }
+  }
 
   enableForm(foundPatient: Patient) {
     this.formEnabled = true
@@ -35,9 +60,11 @@ export class CadastrarExameComponent {
   }
 
   registerExam(form: NgForm) {
+    const id = (this.examId >= 0) ? this.examId : this.database.nextExamID++
+
     const exam: Exam = {
       idDoPaciente: this.patientId,
-      idDoExame: this.database.nextExamID++,
+      idDoExame: id,
       nome: this.examName,
       dataDoExame: this.examDate,
       horario: this.examTime,
@@ -47,11 +74,26 @@ export class CadastrarExameComponent {
       resultados: this.results
     }
 
-    this.database.exams.push(exam)
-    form.reset()
-    this.database.persist('exams', this.database.exams)
-    this.database.persist('nextExamID', this.database.nextExamID)
+    if (this.examId == -1) {
+      this.database.exams.push(exam)
+      this.database.persist('nextExamID', this.database.nextExamID)
+    }
 
+    else this.database.exams[this.getExamIndex()] = exam
+
+    form.reset()
+
+    this.database.persist('exams', this.database.exams)
     alert("Exame cadastrado com sucesso.")
+  }
+
+  getExamIndex(): number {
+    return this.database.exams.findIndex(exam => exam.idDoExame == this.examId)
+  }
+
+  delete() {
+    this.database.exams.splice(this.getExamIndex(), 1)
+    this.database.persist('exams', this.database.exams)
+    alert("Operação realizada com sucesso!")
   }
 }
