@@ -48,24 +48,24 @@ export class CadastrarPacienteComponent implements OnInit {
     this.patientId = this.route.snapshot.paramMap.get('id')
 
     if (this.patientId >= 0) {
-      const patient = this.database.patients.find(patient => patient.id == this.patientId)
-      this.fullName = patient!.nomeCompleto
-      this.gender = patient!.genero
-      this.birthday = patient!.dataDeNascimento
-      this.cpf = patient!.cpf
-      this.rg = patient!.rg
-      this.maritalStatus = patient!.estadoCivil
-      this.telephone = patient!.telefone
+      const patient = this.database.patients.find(patient => patient.id == this.patientId)!
+      this.fullName = patient.nomeCompleto
+      this.gender = patient.genero
+      this.birthday = patient.dataDeNascimento
+      this.cpf = patient.cpf
+      this.rg = patient.rg
+      this.maritalStatus = patient.estadoCivil
+      this.telephone = patient.telefone
       this.email = patient?.email
-      this.countryOfBirth = patient!.naturalidade
-      this.emergencyContact = patient!.contatoDeEmergencia
+      this.countryOfBirth = patient.naturalidade
+      this.emergencyContact = patient.contatoDeEmergencia
       this.alergyList = patient?.listaDeAlergias
       this.careList = patient?.listaDeCuidadosEspecificos
-      this.insurance = patient!.convenio
+      this.insurance = patient.convenio
       this.insuranceId = patient?.numeroDoConvenio
       this.insuranceExpired = patient?.validadeDoConvenio
 
-      const address = patient!.endereco
+      const address = patient.endereco
       this.cep = address.cep
       this.city = address.cidade
       this.state = address.estado
