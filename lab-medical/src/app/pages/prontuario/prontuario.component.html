@@ -15,7 +15,7 @@
             <p class="col-12">Descrição: {{ appointment.descricao }}</p>
             <p *ngIf="appointment.medicacao" class="col-12">Medicação: {{ appointment?.medicacao }}</p>
             <p class="col-12">Dosagem e Precauções: {{ appointment.dosagemEPrecaucoes }}</p>
-            <button class="btn btn-warning offset-md-9 col-3">Editar</button>
+            <button [routerLink]="['/cadastrar-consulta', appointment.idDaConsulta]" class="btn btn-warning offset-md-9 col-3">Editar</button>
         </li> 
     </ul>
     
@@ -33,7 +33,7 @@
             <p class="col-12">ID do Exame: {{ exam.idDoExame }}</p>
             <p class="col-12">Tipo: {{ exam.tipoDoExame }}</p>
             <p class="col-12">Resultados: {{ exam.resultados }}</p>
-            <button class="btn btn-warning offset-md-9 col-3">Editar</button>
+            <button [routerLink]="['/cadastrar-consulta', exam.idDoExame]" class="btn btn-warning offset-md-9 col-3">Editar</button>
         </li> 
         </ul>
 
