@@ -13,7 +13,7 @@ export class InicioComponent {
   }
 
   filteredPatients = this.database.patients
-  nomeBuscado : string = ""
+  query : string = ""
 
   statistics = [
     { 
@@ -34,6 +34,10 @@ export class InicioComponent {
   ]
 
   filterPatients() {
-    this.filteredPatients = this.database.patients.filter(patient => patient.nomeCompleto.toLocaleLowerCase().includes(this.nomeBuscado.toLocaleLowerCase()))
+    this.filteredPatients =
+    this.database.patients.filter(
+      patient => patient.nomeCompleto.toLocaleLowerCase().includes(this.query.toLocaleLowerCase()) ||
+      patient.telefone.includes(this.query) ||
+      patient.email?.includes(this.query))
   }
 }
