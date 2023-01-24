@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import Address from 'src/app/interfaces/address.interface';
 import Patient from 'src/app/interfaces/patient.interface';
 import { CurrentPageService } from 'src/app/services/current-page.service';
@@ -10,7 +11,10 @@ import { DatabaseService } from 'src/app/services/database.service';
   templateUrl: './cadastrar-paciente.component.html',
   styleUrls: ['./cadastrar-paciente.component.scss']
 })
-export class CadastrarPacienteComponent {
+export class CadastrarPacienteComponent implements OnInit {
+  patientId: any
+  hasAppointmentOrExam?: boolean
+
   fullName: string = ""
   gender: string = ""
   birthday: string = ""
@@ -26,9 +30,6 @@ export class CadastrarPacienteComponent {
   insurance: string = "";
   insuranceId?: number
   insuranceExpired?: Date;
-  
-  listaDeAlergias?: string;
-  listaDeCuidadosEspecificos?: string = "";
  
   cep: string = ""
   city: string = ""
@@ -39,8 +40,61 @@ export class CadastrarPacienteComponent {
   neighborhood: string = ""
   reference: string = ""
   
-  constructor(public database: DatabaseService, private currentPage: CurrentPageService) {
+  constructor(public database: DatabaseService, private route: ActivatedRoute, private router: Router, private currentPage: CurrentPageService) {
     this.currentPage.currentPageTitle = 'CADASTRO DE PACIENTE'
+  }
+
+  ngOnInit(): void {
+    this.patientId = this.route.snapshot.paramMap.get('id')
+
+    if (this.patientId >= 0) {
+      const patient = this.database.patients.find(patient => patient.id == this.patientId)
+      this.fullName = patient!.nomeCompleto
+      this.gender = patient!.genero
+      this.birthday = patient!.dataDeNascimento
+      this.cpf = patient!.cpf
+      this.rg = patient!.rg
+      this.maritalStatus = patient!.estadoCivil
+      this.telephone = patient!.telefone
+      this.email = patient?.email
+      this.countryOfBirth = patient!.naturalidade
+      this.emergencyContact = patient!.contatoDeEmergencia
+      this.alergyList = patient?.listaDeAlergias
+      this.careList = patient?.listaDeCuidadosEspecificos
+      this.insurance = patient!.convenio
+      this.insuranceId = patient?.numeroDoConvenio
+      this.insuranceExpired = patient?.validadeDoConvenio
+
+      const address = patient!.endereco
+      this.cep = address.cep
+      this.city = address.cidade
+      this.state = address.estado
+      this.street = address.logradouro
+      this.streetNumber = address.numero
+      this.complement = address.complemento
+      this.neighborhood = address.bairro
+      this.reference = address.referencia
+
+      this.checkIfEmpty()
+    }
+  }
+
+  checkIfEmpty() {
+    if (this.hasNoAppointments() && this.hasNoExams())
+      this.hasAppointmentOrExam = false
+    else this.hasAppointmentOrExam = true
+  }
+
+  hasNoAppointments(): boolean {
+    if (this.database.appointments.find(appointment => appointment.idDoPaciente == this.patientId) === undefined)
+      return true
+    return false
+  }
+
+  hasNoExams(): boolean {
+    if (this.database.exams.find(exam => exam.idDoPaciente == this.patientId) === undefined)
+      return true
+    return false
   }
   
   registerPatient(form: NgForm) {
@@ -59,32 +113,45 @@ export class CadastrarPacienteComponent {
       referencia: this.reference
     }
 
+    const id = (this.patientId >= 0) ? this.patientId : this.database.nextPatientID++
+
     const patient: Patient = {
-    id: this.database.nextPatientID++,
-    nomeCompleto: this.fullName,
-    genero: this.gender,
-    dataDeNascimento: this.birthday,
-    cpf: this.cpf,
-    rg: this.rg,
-    estadoCivil: this.maritalStatus,
-    telefone: this.telephone,
-    email: this?.email,
-    naturalidade: this.countryOfBirth,
-    contatoDeEmergencia: this.emergencyContact,
-    listaDeAlergias: this?.alergyList,
-    listaDeCuidadosEspecificos: this?.careList,
-    convenio: this?.insurance,
-    numeroDoConvenio: this?.insuranceId,
-    validadeDoConvenio: this?.insuranceExpired,
-    endereco: address
+      id: id,
+      nomeCompleto: this.fullName,
+      genero: this.gender,
+      dataDeNascimento: this.birthday,
+      cpf: this.cpf,
+      rg: this.rg,
+      estadoCivil: this.maritalStatus,
+      telefone: this.telephone,
+      email: this?.email,
+      naturalidade: this.countryOfBirth,
+      contatoDeEmergencia: this.emergencyContact,
+      listaDeAlergias: this?.alergyList,
+      listaDeCuidadosEspecificos: this?.careList,
+      convenio: this?.insurance,
+      numeroDoConvenio: this?.insuranceId,
+      validadeDoConvenio: this?.insuranceExpired,
+      endereco: address
     }
 
-  this.database.patients.push(patient)
-  form.reset()
-  this.database.persist('patients', this.database.patients)
-  this.database.persist('nextPatientID', this.database.nextPatientID)
+    // Cadastrar novo usuário
+    if (this.patientId == -1) {
+      this.database.patients.push(patient)
+      this.database.persist('nextPatientID', this.database.nextPatientID)
+    }
+    
+    // Editar usuário existente
+    else this.database.patients[this.getPatientIndex()] = patient
+    
+    form.reset()
 
-  alert("Usuário cadastrado com sucesso!")
+    this.database.persist('patients', this.database.patients)
+    alert("Operação realizada com sucesso!")
+  }
+
+  getPatientIndex(): number {
+    return this.database.patients.findIndex(patient => patient.id == this.patientId)
   }
 
   isInvalid(): boolean {
@@ -120,6 +187,12 @@ export class CadastrarPacienteComponent {
       return true
     alert("Telefone apenas no formato (XX) 9 XXXX-XXXX.")
     return false
+  }
+
+  delete() {
+    this.database.patients.splice(this.getPatientIndex(), 1)
+    this.database.persist('patients', this.database.patients)
+    alert("Operação realizada com sucesso!")
   }
 
   getAddress() {
