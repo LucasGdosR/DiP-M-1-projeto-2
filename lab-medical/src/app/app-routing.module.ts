@@ -14,8 +14,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [LoggedOutGuard] },
   { path: 'inicio', component: InicioComponent, canActivate: [AuthGuard] },
   { path: 'cadastrar-paciente/:id', component: CadastrarPacienteComponent, canActivate: [AuthGuard] },
-  { path: 'cadastrar-consulta', component: CadastrarConsultaComponent, canActivate: [AuthGuard] },
-  { path: 'cadastrar-exame', component: CadastrarExameComponent, canActivate: [AuthGuard] },
+  { path: 'cadastrar-consulta/:id', component: CadastrarConsultaComponent, canActivate: [AuthGuard] },
+  { path: 'cadastrar-exame/:id', component: CadastrarExameComponent, canActivate: [AuthGuard] },
   { path: 'listar-prontuarios', component: ListarProntuariosComponent, canActivate: [AuthGuard] },
   { path: 'listar-prontuarios/:id', component: ProntuarioComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '/inicio', pathMatch: 'full' }
