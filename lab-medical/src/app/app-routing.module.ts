@@ -13,7 +13,7 @@ import { ProntuarioComponent } from './pages/prontuario/prontuario.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [LoggedOutGuard] },
   { path: 'inicio', component: InicioComponent, canActivate: [AuthGuard] },
-  { path: 'cadastrar-paciente', component: CadastrarPacienteComponent, canActivate: [AuthGuard] },
+  { path: 'cadastrar-paciente/:id', component: CadastrarPacienteComponent, canActivate: [AuthGuard] },
   { path: 'cadastrar-consulta', component: CadastrarConsultaComponent, canActivate: [AuthGuard] },
   { path: 'cadastrar-exame', component: CadastrarExameComponent, canActivate: [AuthGuard] },
   { path: 'listar-prontuarios', component: ListarProntuariosComponent, canActivate: [AuthGuard] },
