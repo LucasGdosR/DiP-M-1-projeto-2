@@ -84,7 +84,7 @@ export class CadastrarExameComponent implements OnInit {
     form.reset()
 
     this.database.persist('exams', this.database.exams)
-    alert("Exame cadastrado com sucesso.")
+    alert("Operação realizada com sucesso.")
   }
 
   getExamIndex(): number {
@@ -94,6 +94,6 @@ export class CadastrarExameComponent implements OnInit {
   delete() {
     this.database.exams.splice(this.getExamIndex(), 1)
     this.database.persist('exams', this.database.exams)
-    alert("Operação realizada com sucesso!")
+    alert("Operação realizada com sucesso.")
   }
 }
