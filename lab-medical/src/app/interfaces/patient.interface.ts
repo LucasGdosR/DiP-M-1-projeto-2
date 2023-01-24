@@ -14,7 +14,7 @@ export default interface Patient {
     contatoDeEmergencia: string;
     listaDeAlergias?: string;
     listaDeCuidadosEspecificos?: string;
-    convenio?: string;
+    convenio: string;
     numeroDoConvenio?: number;
     validadeDoConvenio?: Date;
     endereco: Address;

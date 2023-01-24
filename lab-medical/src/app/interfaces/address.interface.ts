@@ -4,7 +4,7 @@ export default interface Address {
     estado: string;
     logradouro: string;
     numero: string;
-    complemento?: string;
+    complemento: string;
     bairro: string;
-    referencia?: string;
+    referencia: string;
 }
