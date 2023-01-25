@@ -17,9 +17,10 @@ export class ListarProntuariosComponent {
   query : string = ""
 
   filterPatients() {
+    const queryInt = +this.query
     this.filteredPatients =
     this.database.patients.filter(
       patient => patient.nomeCompleto.toLocaleLowerCase().includes(this.query.toLocaleLowerCase()) ||
-      patient.id.toString().includes(this.query))
+      patient.id.toString().includes(queryInt.toString()))
   }
 }
