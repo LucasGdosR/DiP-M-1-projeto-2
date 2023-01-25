@@ -7,33 +7,46 @@
 
     <ul class="container list-unstyled">
         <h2 class="row mx-3 fs-4">Consultas</h2>
-        <li *ngFor="let appointment of appointments" class="row m-3 border">
+        <li *ngFor="let appointment of appointments" class="row m-3 border bg-light">
             <h3 class="col-12 fs-5">Motivo da Consulta: {{ appointment.motivo }}</h3>
-            <h4 class="col-6 fs-5">Data: {{ appointment.date }}</h4>
-            <h4 class="col-6 fs-5">Hora: {{ appointment.horario }}</h4>
-            <p class="col-12">ID da Consulta: {{ appointment.idDaConsulta }}</p>
-            <p class="col-12">Descrição: {{ appointment.descricao }}</p>
-            <p *ngIf="appointment.medicacao" class="col-12">Medicação: {{ appointment?.medicacao }}</p>
-            <p class="col-12">Dosagem e Precauções: {{ appointment.dosagemEPrecaucoes }}</p>
-            <button [routerLink]="['/cadastrar-consulta', appointment.idDaConsulta]" class="btn btn-warning offset-md-9 col-3">Editar</button>
+            <h4 class="col-5 fs-5">Data: {{ appointment.date }}</h4>
+            <h4 class="col-5 fs-5">Hora: {{ appointment.horario }}</h4>
+            <div class="col-2 gx-2">
+                <button [routerLink]="['/cadastrar-consulta', appointment.idDaConsulta]" class="btn btn-outline-secondary border">
+                    <i class="bi bi-pencil-square"></i> Editar
+                </button>
+            </div>
+            <p class="col-12"><span class="fw-bold">ID da Consulta:</span> {{ appointment.idDaConsulta }}</p>
+            <p class="col-12"><span class="fw-bold">Descrição:</span> {{ appointment.descricao }}</p>
+            <p *ngIf="appointment.medicacao" class="col-12"><span class="fw-bold">Medicação:</span> {{ appointment?.medicacao }}</p>
+            <p class="col-12"><span class="fw-bold">Dosagem e Precauções:</span> {{ appointment.dosagemEPrecaucoes }}</p>
         </li> 
     </ul>
     
+    <hr *ngIf="appointments && exams" class="border-5 rounded">
+
     <ul class="container list-unstyled">
         <h2 class="row mx-3 fs-4">Exames</h2>
-        <li *ngFor="let exam of exams" class="row m-3 border">
+        <li *ngFor="let exam of exams" class="row m-3 border bg-light">
             <h4 class="col-12 fs-5">Nome do Exame: {{ exam.nome }}</h4>
-            <h4 class="col-12 fs-5">Laboratório: {{ exam.laboratorio }}</h4>
             <h5 class="col-5 fs-5">Data: {{ exam.date }}</h5>
             <h5 class="col-5 fs-5">Hora: {{ exam.horario }}</h5>
-            <a *ngIf="exam.url; else offset" [href]="exam.url" class="col-2">
-                <img src="../../../assets/icone-de-anexar.png" alt="Clipes de anexo">
-            </a>
+            <div class="col-2 gx-2">
+                <button [routerLink]="['/cadastrar-exame', exam.idDoExame]" class="btn btn-outline-secondary border">
+                    <i class="bi bi-pencil-square"></i> Editar
+                </button>
+            </div>
+            <h4 class="col-10 fs-5">Laboratório: {{ exam.laboratorio }}</h4>
+            <p *ngIf="exam.url; else offset" class="col-2 my-2">
+                Anexo
+                <a [href]="exam.url">
+                    <i class="bi bi-paperclip"></i>
+                </a>
+            </p>
             <ng-template #offset class="col-2"></ng-template>
-            <p class="col-12">ID do Exame: {{ exam.idDoExame }}</p>
-            <p class="col-12">Tipo: {{ exam.tipoDoExame }}</p>
-            <p class="col-12">Resultados: {{ exam.resultados }}</p>
-            <button [routerLink]="['/cadastrar-exame', exam.idDoExame]" class="btn btn-warning offset-md-9 col-3">Editar</button>
+            <p class="col-12"><span class="fw-bold">ID do Exame:</span> {{ exam.idDoExame }}</p>
+            <p class="col-12"><span class="fw-bold">Tipo:</span> {{ exam.tipoDoExame }}</p>
+            <p class="col-12"><span class="fw-bold">Resultados:</span> {{ exam.resultados }}</p>
         </li> 
         </ul>
 
