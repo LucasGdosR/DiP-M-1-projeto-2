@@ -13,12 +13,12 @@
         </div>
 
         <div class="col-3 form-floating my-2">
-            <input [(ngModel)]="appointmentDate" class="form-control" type="date" id="appointmentDate" name="appointmentDate" required min="2023-02-05" [disabled]="!formEnabled">
+            <input [(ngModel)]="appointmentDate" class="form-control" type="date" id="appointmentDate" name="appointmentDate" required [disabled]="!formEnabled">
             <label for="appointmentDate">Data da Consulta</label>
         </div>
 
         <div class="col-3 form-floating my-2">
-            <input [(ngModel)]="appointmentTime" class="form-control" type="datetime-local" id="appointmentTime" name="appointmentTime" required [disabled]="!formEnabled">
+            <input [(ngModel)]="appointmentTime" class="form-control" type="time" id="appointmentTime" name="appointmentTime" required [disabled]="!formEnabled">
             <label for="appointmentTime">Hora da Consulta</label>
         </div>
 
