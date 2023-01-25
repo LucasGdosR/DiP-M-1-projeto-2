@@ -11,10 +11,14 @@
               <span class="fw-bold">Geral</span>
             <ul class="nav nav-pills flex-column mb-auto">
               <li class="nav-item">
-                <a [routerLink]='"/inicio"' class="nav-link active" aria-current="page">INICIO</a>
+                <a [routerLink]='"/inicio"' class="nav-link active" aria-current="page">
+                  <i class="bi bi-bar-chart-line"></i> INICIO
+                </a>
               </li>
               <li class="nav-item">
-                <a [routerLink]='"/login"' (click)="logout()" class="nav-link active" aria-current="page">SAIR</a>
+                <a [routerLink]='"/login"' (click)="logout()" class="nav-link active" aria-current="page">
+                  <i class="bi bi-box-arrow-right"></i> SAIR
+                </a>
               </li>
             </ul>
           </li>
@@ -22,10 +26,14 @@
             <span class="fw-bold">Pacientes</span>
             <ul class="nav nav-pills flex-column mb-auto">
               <li class="nav-item">
-                <a [routerLink]='"/cadastrar-paciente/-1"' class="nav-link active" aria-current="page">CADASTRAR</a>
+                <a [routerLink]='"/cadastrar-paciente/-1"' class="nav-link active" aria-current="page">
+                  <i class="bi bi-person-plus"></i> CADASTRAR
+                </a>
               </li>
               <li class="nav-item">
-                <a [routerLink]='"/listar-prontuarios"'  class="nav-link active" aria-current="page">LISTAR PRONTUÁRIO</a>
+                <a [routerLink]='"/listar-prontuarios"'  class="nav-link active" aria-current="page">
+                  <i class="bi bi-list-ul"></i> LISTAR PRONTUÁRIO
+                </a>
               </li>
             </ul>
           </li>
@@ -33,10 +41,14 @@
             <span class="fw-bold">Exames</span>
             <ul class="nav nav-pills flex-column mb-auto">
               <li class="nav-item">
-                <a [routerLink]='"/cadastrar-consulta/-1"' class="nav-link active" aria-current="page">CADASTRAR CONSULTA</a>
+                <a [routerLink]='"/cadastrar-consulta/-1"' class="nav-link active" aria-current="page">
+                  <i class="bi bi-plus-lg"></i> CADASTRAR CONSULTA
+                </a>
               </li>
               <li class="nav-item">
-                <a [routerLink]='"/cadastrar-exame/-1"' class="nav-link active" aria-current="page">CADASTRAR EXAME</a>
+                <a [routerLink]='"/cadastrar-exame/-1"' class="nav-link active" aria-current="page">
+                  <i class="bi bi-plus-lg"></i> CADASTRAR EXAME
+                </a>
               </li>
             </ul>
           </li>
