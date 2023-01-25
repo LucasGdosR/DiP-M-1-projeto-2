@@ -1,4 +1,3 @@
-import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -21,8 +20,8 @@ export class CadastrarConsultaComponent implements OnInit {
   patientFullName: string = ""
 
   appointmentMotive: string = ""
-  appointmentDate: Date = new Date()
-  appointmentTime: Time = {hours: 8, minutes: 0} // Mudar para tempo
+  appointmentDate: string = ""
+  appointmentTime: string = ""
   issueDescription: string = ""
   prescriptedMedicine?: string
   dosageAndPrecautions: string = ""
@@ -33,6 +32,8 @@ export class CadastrarConsultaComponent implements OnInit {
 
   ngOnInit(): void {
     this.appointmentId = this.route.snapshot.paramMap.get('id')
+    const now = this.getNow()
+    this.initializeDateTime(now)
 
     if (this.appointmentId >= 0) {
       this.searchEnabled = false
@@ -49,6 +50,29 @@ export class CadastrarConsultaComponent implements OnInit {
       this.prescriptedMedicine = appointment.medicacao
       this.dosageAndPrecautions = appointment.dosagemEPrecaucoes
     }
+  }
+
+  getNow(): { date: string, time: string } {
+    const now = new Date()
+
+    const year = now.getFullYear().toString()
+    const month = (now.getMonth() + 1).toString().padStart(2, '0')
+    const day = now.getDate().toString().padStart(2, '0')
+
+    const date = year + '-' + month + '-' + day
+
+    const hour = now.getHours().toString().padStart(2, '0')
+    const minute = now.getMinutes().toString().padStart(2, '0')
+
+    const time = hour + ':' + minute
+    
+    const nowString: { date: string, time: string } = { date: date, time: time }
+    return nowString
+  }
+
+  initializeDateTime(now: { date: string, time: string }): void {
+    this.appointmentDate = now.date
+    this.appointmentTime = now.time
   }
 
   enableForm(foundPatient: Patient) {
