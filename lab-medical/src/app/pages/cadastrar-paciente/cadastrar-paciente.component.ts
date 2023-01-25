@@ -164,13 +164,24 @@ export class CadastrarPacienteComponent implements OnInit {
   }
 
   validateBirthday(): boolean {
-    return true
+    const now = new Date()
+    const birthYear = parseInt(this.birthday.slice(0, 4))
+
+    if (birthYear < now.getFullYear())
+      return true
     
-    // Esta comparação não funciona
-    // if (this.birthday < new Date())
-    //   return true
-    // alert("Não é possível nascer no futuro!")
-    // return false
+    const birthMonth = parseInt(this.birthday.slice(5, 7)) - 1 // Jan == 0
+
+    if (birthYear == now.getFullYear() && birthMonth < now.getMonth())
+      return true
+
+    const birthDate = parseInt(this.birthday.slice(8))
+
+    if (birthYear == now.getFullYear() && birthMonth == now.getMonth() && birthDate <= now.getDate())
+      return true
+
+    alert("Não é possível nascer no futuro!")
+    return false
   }
 
   validateCPF(): boolean {
