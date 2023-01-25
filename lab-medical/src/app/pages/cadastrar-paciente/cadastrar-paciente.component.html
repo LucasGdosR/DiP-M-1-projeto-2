@@ -1,10 +1,16 @@
 <div class="container">
     <h2 class="row mx-3 mt-3">Preencha os campos para cadastrar</h2>
-    <form ngNativeValidate #registerForm="ngForm" (ngSubmit)="registerPatient(registerForm)" class="row mx-3 border rounded">
-        <h3 class="my-2 col-4 fs-4">Identificação</h3>
-        <input type="submit" class="my-2 col-2 btn btn-outline-secondary" name="edit" id="edit" [disabled]="this.patientId < 0" value="Editar">
-        <button type="reset" (click)="delete()" class="my-2 offset-md-1 col-2 btn btn-outline-danger fw-bold" [disabled]="this.patientId < 0 || this.hasAppointmentOrExam">Deletar</button>
-        <input type="submit" class="my-2 offset-md-1 col-2 btn btn-primary" [disabled]="this.patientId >= 0" value="Salvar" name="save" id="save">
+    <form ngNativeValidate #registerForm="ngForm" (ngSubmit)="registerPatient(registerForm)" class="row m-3 border shadow bg-body-tertiary rounded py-1">
+        <h3 class="my-2 col-6 fs-4">Identificação</h3>
+        <div class="col-2 gx-2 d-flex flex-column">
+            <input type="submit" class="my-2 btn" [ngClass]="this.patientId < 0 ? 'btn-outline-secondary' : 'btn-primary'" name="edit" id="edit" [disabled]="this.patientId < 0" value="Editar">
+        </div>
+        <div class="col-2 gx-2 d-flex flex-column">
+            <button type="reset" (click)="delete()" class="my-2 btn" [ngClass]="(this.patientId < 0 || this.hasAppointmentOrExam) ? 'btn-outline-secondary' : 'btn-danger fw-bold'" [disabled]="this.patientId < 0 || this.hasAppointmentOrExam">Deletar</button>
+        </div>
+        <div class="col-2 gx-2 d-flex flex-column">
+            <input type="submit" class="my-2 btn" [ngClass]="this.patientId < 0 ? 'btn-primary' : 'btn-outline-secondary'" [disabled]="this.patientId >= 0" value="Salvar" name="save" id="save">
+        </div>
         
         <div class="col-6 form-floating my-2">
             <input [(ngModel)]="fullName" class="form-control" type="text" id="fullName" name="fullName" required minlength="8" maxlength="64">
