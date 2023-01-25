@@ -1,9 +1,12 @@
 <div class="container">
     <div class="row my-5">
+
         <div class="col-6 my-auto">
             <img class="my-5" width="100%" src="../../../assets/pagina-login.png" alt="Ícone da página de login">
         </div>
+
         <div class="col-6 border-start border-primary border-4">
+            
             <div class="row">
                 <div class="offset-md-3 col-5 my-5">
                     <label class="" for="criar-conta">Não possui uma conta?</label>
@@ -13,61 +16,77 @@
                 </div>
                 <h1 class="col-12 ms-5 my-5">Login</h1>
             </div>
+
             <form (submit)="authenticate()" class="row ms-3">
                 <div class="col-12 mt-3">
                     <label for="e-mail" class="form-label">E-Mail</label>
                 </div>
+            
                 <div class="col-12">
                     <input [(ngModel)]="email" class="form-control" required name="e-mail" id="e-mail" type="email">
                 </div>
+            
                 <div class="col-12 mt-3">
                     <label for="senha" class="form-label">Senha</label>
                 </div>
+            
                 <div class="col-12 mb-5">
                     <input [(ngModel)]="password" class="form-control" required name="senha" id="senha" type="password">           
                 </div>
+            
                 <div class="col-12 mt-5">
                     <input class="btn btn-primary form-control" type="submit" value="Entrar">
                 </div>
             </form>
+            
             <div class="row">
                 <div class="col-12 my-2 text-center">
                     <a href="#" (click)="notImplemented()">Esqueceu sua senha?</a><br>
                 </div>
+
                 <div class="col-12 mt-5 text-end">
                     <img src="../../../favicon.ico" alt="Ícone do site">
                 </div>
             </div>
+
         </div>
     </div>
 </div>
+
 <div class="modal fade" id="modal-cadastral" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
+
+        <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Crie sua conta</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+
       <div class="modal-body">
         <form #formCadastro="ngForm" ngNativeValidate (ngSubmit)="createAccount(formCadastro)">
+
           <div class="mb-3">
             <label for="cadastro-email" class="col-form-label">E-mail</label>
             <input [(ngModel)]="createdEmail" required type="email" class="form-control" id="cadastro-email" name="cadastro-email">
           </div>
+
           <div class="mb-3">
             <label for="modal-senha" class="col-form-label">Senha:</label>
             <input [(ngModel)]="createdPassword" required type="password" minlength="9" class="form-control" id="modal-senha" name="modal-senha">
           </div>
+
           <div class="mb-3">
-            <label for="modal-confirma-senha" class="col-form-label">Senha:</label>
+            <label for="modal-confirma-senha" class="col-form-label">Confirma Senha:</label>
             <input [(ngModel)]="confirmedPassword" required type="password" minlength="9" class="form-control" id="modal-confirma-senha" name="modal-confirma-senha">
-        </div>
-        <div class="modal-footer">
+          </div>
+
+          <div class="modal-footer">
             <button id="closeModal" type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
             <input type="submit" class="btn btn-primary" value="Cadastrar">
           </div>
         </form>
-    </div>
+      </div>
+      
     </div>
   </div>
 </div>
