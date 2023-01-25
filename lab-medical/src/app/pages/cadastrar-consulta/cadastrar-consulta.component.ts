@@ -20,7 +20,7 @@ export class CadastrarConsultaComponent implements OnInit {
   patientFullName: string = ""
 
   appointmentMotive: string = ""
-  appointmentDate: string = ""
+  date: string = ""
   appointmentTime: string = ""
   issueDescription: string = ""
   prescriptedMedicine?: string
@@ -44,7 +44,7 @@ export class CadastrarConsultaComponent implements OnInit {
       this.enableForm(patient!)
 
       this.appointmentMotive = appointment.motivo
-      this.appointmentDate = appointment.dataDaConsulta
+      this.date = appointment.date
       this.appointmentTime = appointment.horario
       this.issueDescription = appointment.descricao
       this.prescriptedMedicine = appointment.medicacao
@@ -71,7 +71,7 @@ export class CadastrarConsultaComponent implements OnInit {
   }
 
   initializeDateTime(now: { date: string, time: string }): void {
-    this.appointmentDate = now.date
+    this.date = now.date
     this.appointmentTime = now.time
   }
 
@@ -88,7 +88,7 @@ export class CadastrarConsultaComponent implements OnInit {
       idDoPaciente: this.patientId,
       idDaConsulta: id,
       motivo: this.appointmentMotive,
-      dataDaConsulta: this.appointmentDate,
+      date: this.date,
       horario: this.appointmentTime,
       descricao: this.issueDescription,
       medicacao: this?.prescriptedMedicine,

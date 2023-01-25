@@ -36,9 +36,30 @@ export class ProntuarioComponent implements OnInit {
     this.allergyList = this.patient?.listaDeAlergias
     this.careList = this.patient?.listaDeCuidadosEspecificos
   
-    this.appointments = this.database.appointments.filter(appointment => appointment.idDoPaciente == this.patientId) // sort cronológico
-    this.exams = this.database.exams.filter(exam => exam.idDoPaciente == this.patientId) // sort cronológico
+    this.appointments = this.database.appointments.filter(appointment => appointment.idDoPaciente == this.patientId)
+    this.sortByTimeAndDate(this.appointments)
+
+    this.exams = this.database.exams.filter(exam => exam.idDoPaciente == this.patientId)
+    this.sortByTimeAndDate(this.exams)
   }
   
+  sortByTimeAndDate(array: any[]): void {
+    array.sort((a, b) => {
+      if (a.horario < b.horario)
+        return -1
+      if (b.horario < a.horario)
+        return 1
+      return 0
+    })
+
+    array.sort((a, b) => {
+      if (a.date < b.date)
+        return -1
+      if (b.date < a.date)
+        return 1
+      return 0
+    })
+
+  }
 
 }

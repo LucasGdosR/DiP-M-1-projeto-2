@@ -20,7 +20,7 @@ export class CadastrarExameComponent implements OnInit {
   patientFullName: string = ""
   
   examName: string = ""
-  examDate: string = ""
+  date: string = ""
   examTime: string = ""
   examType: string = ""
   laboratory: string = ""
@@ -45,7 +45,7 @@ export class CadastrarExameComponent implements OnInit {
       this.enableForm(patient!)
 
       this.examName = exam.nome
-      this.examDate = exam.dataDoExame
+      this.date = exam.date
       this.examTime = exam.horario
       this.examType = exam.tipoDoExame
       this.laboratory = exam.laboratorio
@@ -73,7 +73,7 @@ export class CadastrarExameComponent implements OnInit {
   }
 
   initializeDateTime(now: { date: string, time: string }): void {
-    this.examDate = now.date
+    this.date = now.date
     this.examTime = now.time
   }
 
@@ -90,7 +90,7 @@ export class CadastrarExameComponent implements OnInit {
       idDoPaciente: this.patientId,
       idDoExame: id,
       nome: this.examName,
-      dataDoExame: this.examDate,
+      date: this.date,
       horario: this.examTime,
       tipoDoExame: this.examType,
       laboratorio: this.laboratory,
