@@ -109,6 +109,8 @@ export class CadastrarExameComponent implements OnInit {
 
     this.database.persist('exams', this.database.exams)
     alert("Operação realizada com sucesso.")
+
+    this.initializeDateTime(this.getNow())
   }
 
   getExamIndex(): number {

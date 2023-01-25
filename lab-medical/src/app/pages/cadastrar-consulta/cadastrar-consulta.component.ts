@@ -106,6 +106,8 @@ export class CadastrarConsultaComponent implements OnInit {
     
     this.database.persist('appointments', this.database.appointments)
     alert("Operação realizada com sucesso.")
+
+    this.initializeDateTime(this.getNow())
   }
 
   getAppointmentIndex(): number {
