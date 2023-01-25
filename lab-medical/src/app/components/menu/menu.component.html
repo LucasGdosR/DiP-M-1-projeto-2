@@ -1,58 +1,65 @@
+<div class="d-flex flex-column">
+  <div class="collapse collapse-horizontal show" aria-expanded="true" id="sidebar">
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-primary collapse collapse-horizontal show rounded-end-3" style="width: 280px;">
 
-  <div class="d-flex flex-column">
-    <div class="collapse collapse-horizontal show" aria-expanded="true" id="sidebar">
-      <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-primary collapse collapse-horizontal show rounded-end-3" style="width: 280px;">
-        <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-          <img src="../../../favicon.ico" alt="Ícone do site">
-        </div>
-        <hr>
-        <ul class="nav nav-pills flex-column mb-auto">
-          <li class="nav-item">
-              <span class="fw-bold">Geral</span>
-            <ul class="nav nav-pills flex-column mb-auto">
-              <li class="nav-item">
-                <a [routerLink]='"/inicio"' class="nav-link active" aria-current="page">
-                  <i class="bi bi-bar-chart-line"></i> INICIO
-                </a>
-              </li>
-              <li class="nav-item">
-                <a [routerLink]='"/login"' (click)="logout()" class="nav-link active" aria-current="page">
-                  <i class="bi bi-box-arrow-right"></i> SAIR
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <span class="fw-bold">Pacientes</span>
-            <ul class="nav nav-pills flex-column mb-auto">
-              <li class="nav-item">
-                <a [routerLink]='"/cadastrar-paciente/-1"' class="nav-link active" aria-current="page">
-                  <i class="bi bi-person-plus"></i> CADASTRAR
-                </a>
-              </li>
-              <li class="nav-item">
-                <a [routerLink]='"/listar-prontuarios"'  class="nav-link active" aria-current="page">
-                  <i class="bi bi-list-ul"></i> LISTAR PRONTUÁRIO
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <span class="fw-bold">Exames</span>
-            <ul class="nav nav-pills flex-column mb-auto">
-              <li class="nav-item">
-                <a [routerLink]='"/cadastrar-consulta/-1"' class="nav-link active" aria-current="page">
-                  <i class="bi bi-plus-lg"></i> CADASTRAR CONSULTA
-                </a>
-              </li>
-              <li class="nav-item">
-                <a [routerLink]='"/cadastrar-exame/-1"' class="nav-link active" aria-current="page">
-                  <i class="bi bi-plus-lg"></i> CADASTRAR EXAME
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
+      <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <img src="../../../favicon.ico" alt="Ícone do site">
       </div>
+      
+      <hr>
+      
+      <ul class="nav nav-pills flex-column mb-auto">
+        
+        <li class="nav-item">
+            <span class="fw-bold">Geral</span>
+          <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+              <a [routerLink]='"/inicio"' routerLinkActive="bg-info" class="my-2 border nav-link active" aria-current="page">
+                <i class="bi bi-bar-chart-line"></i> INICIO
+              </a>
+            </li>
+            <li class="nav-item">
+              <a [routerLink]='"/login"' (click)="logout()" class="my-2 border nav-link active" aria-current="page">
+                <i class="bi bi-box-arrow-right"></i> SAIR
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <span class="fw-bold">Pacientes</span>
+          <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+              <a [routerLink]='"/cadastrar-paciente/-1"' routerLinkActive="bg-info" class="my-2 border nav-link active" aria-current="page">
+                <i class="bi bi-person-plus"></i> CADASTRAR
+              </a>
+            </li>
+            <li class="nav-item">
+              <a [routerLink]='"/listar-prontuarios"' class="my-2 nav-link active" aria-current="page">
+                <i class="bi bi-list-ul"></i> LISTAR PRONTUÁRIO
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <span class="fw-bold">Exames</span>
+          <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+              <a [routerLink]='"/cadastrar-consulta/-1"' routerLinkActive="bg-info" class="my-2 border nav-link active" aria-current="page">
+                <i class="bi bi-plus-lg"></i> CADASTRAR CONSULTA
+              </a>
+            </li>
+            <li class="nav-item">
+              <a [routerLink]='"/cadastrar-exame/-1"' routerLinkActive="bg-info" class="my-2 border nav-link active" aria-current="page">
+                <i class="bi bi-plus-lg"></i> CADASTRAR EXAME
+              </a>
+            </li>
+          </ul>
+        </li>
+
+      </ul>
+
     </div>
+  </div>
 </div>
