@@ -1,8 +1,12 @@
-<div *ngIf="loginService.loggedIn; else login" class="d-flex flex-row">
-    <app-menu></app-menu>
-    <div class="d-flex flex-column flex-grow-1">
-        <app-toolbar></app-toolbar>
-        <router-outlet></router-outlet>
+<div *ngIf="loginService.loggedIn; else login" class="d-flex flex-column">
+    <app-toolbar class="fixed-top"></app-toolbar>
+    <div class="d-flex flex-row flex-grow-1 align-items-stretch mt-5">
+        <div class="d-flex flex-column align-content-stretch">
+            <app-menu></app-menu>
+        </div>
+        <div class="d-flex flex-column flex-grow-1">
+            <router-outlet class="align-self-stretch"></router-outlet>
+        </div>
     </div>
 </div>
 

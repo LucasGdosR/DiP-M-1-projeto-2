@@ -1,5 +1,18 @@
-<header class="d-flex flex-row bg-primary pt-2 me-md-auto text-white text-decoration-none">
-    <p class="flex-grow-1"> {{ this.currentPage.currentPageTitle }} </p>
-    <p class="me-3"> {{ this.loginService.user }} </p>
-    <img height="30px" src="../../../assets/foto-de-perfil.png" alt="Foto de perfil do usuário">
+<header class="container-fluid bg-primary pt-2 me-md-auto text-white text-decoration-none text-center fw-bold">
+    <div class="row align-items-center">
+        <div class="col-2">
+            <label for="shrink-menu">{{ sidebarState }}</label><br>
+            <button (click)="shrinkOrExpand()" class="btn border border-2 align-self-center mb-3 mb-md-0 me-md-auto text-white text-center text-decoration-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-expanded="true" aria-controls="sidebar" id="collapseButton">
+            </button>
+        </div>
+        <div class="col-4">
+            <p class=""> {{ this.currentPage.currentPageTitle }} </p>
+        </div>
+        <div class="col-3 offset-md-2">
+            <p class="me-3"> {{ this.loginService.user }} </p>
+        </div>
+        <div class="col-1">
+            <img class="mb-1" height="40px" src="../../../assets/foto-de-perfil.png" alt="Foto de perfil do usuário">
+        </div>
+    </div>
 </header>

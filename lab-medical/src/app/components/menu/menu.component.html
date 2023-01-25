@@ -1,14 +1,14 @@
 
   <div class="d-flex flex-column">
-    <div class="collapse collapse-horizontal" aria-expanded="false" id="sidebar">
-      <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-primary collapse collapse-horizontal" style="width: 280px;">
+    <div class="collapse collapse-horizontal show" aria-expanded="true" id="sidebar">
+      <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-primary collapse collapse-horizontal show rounded-end-3" style="width: 280px;">
         <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
           <img src="../../../favicon.ico" alt="Ícone do site">
         </div>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
           <li class="nav-item">
-              Geral
+              <span class="fw-bold">Geral</span>
             <ul class="nav nav-pills flex-column mb-auto">
               <li class="nav-item">
                 <a [routerLink]='"/inicio"' class="nav-link active" aria-current="page">INICIO</a>
@@ -19,7 +19,7 @@
             </ul>
           </li>
           <li>
-              Pacientes
+            <span class="fw-bold">Pacientes</span>
             <ul class="nav nav-pills flex-column mb-auto">
               <li class="nav-item">
                 <a [routerLink]='"/cadastrar-paciente/-1"' class="nav-link active" aria-current="page">CADASTRAR</a>
@@ -30,7 +30,7 @@
             </ul>
           </li>
           <li>
-              Exames
+            <span class="fw-bold">Exames</span>
             <ul class="nav nav-pills flex-column mb-auto">
               <li class="nav-item">
                 <a [routerLink]='"/cadastrar-consulta/-1"' class="nav-link active" aria-current="page">CADASTRAR CONSULTA</a>
@@ -41,14 +41,6 @@
             </ul>
           </li>
         </ul>
-        <hr>
       </div>
     </div>
-    <div class="d-flex flex-column mb-auto flex-shrink-0 text-white bg-primary p-2 align-items-center mb-3 mb-md-0 justify-content-center">        
-        <label for="shrink-menu">{{ sidebarState }}</label>
-        <div>
-            <button (click)="shrinkOrExpand()" class="btn border d-flex align-self-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-expanded="true" aria-controls="sidebar" id="collapseButton">
-            </button>
-        </div>
-    </div>
-  </div>
+</div>
