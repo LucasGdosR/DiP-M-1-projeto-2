@@ -1,4 +1,4 @@
-<main class="container">
+<main class="container fade-in">
     <h1 class="fs-4 row m-3">Paciente {{ patientName }}</h1>
     <p class="fs-5 row mx-3">Convênio: {{ insurance }}</p>
     <p class="fs-5 row mx-3">Contato de Emergência: {{ emergencyContact }}</p>
@@ -27,7 +27,7 @@
 
     <ul class="container list-unstyled">
         <h2 class="row mx-3 fs-4">Exames</h2>
-        <li *ngFor="let exam of exams" class="row m-3 border bg-light">
+        <li *ngFor="let exam of exams" class="row m-3 border bg-light fade-in">
             <h4 class="col-12 fs-5">Nome do Exame: {{ exam.nome }}</h4>
             <h5 class="col-5 fs-5">Data: {{ exam.date }}</h5>
             <h5 class="col-5 fs-5">Hora: {{ exam.horario }}</h5>

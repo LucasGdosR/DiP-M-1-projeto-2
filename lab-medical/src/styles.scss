@@ -1,2 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
 @import "~bootstrap-icons/font/bootstrap-icons.css";
+
+.fade-in {
+	-webkit-animation: fade-in 400ms ease-in-out 700ms both;
+	        animation: fade-in 400ms ease-in-out 700ms both;
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

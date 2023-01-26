@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container fade-in">
     <app-patient-search *ngIf="searchEnabled" (searchEmitter)="enableForm($event)"></app-patient-search>
 
     <form ngNativeValidate #examForm="ngForm" (ngSubmit)="registerExam(examForm)" class="row m-3 border shadow bg-body-tertiary rounded py-1">
