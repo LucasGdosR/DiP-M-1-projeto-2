@@ -7,7 +7,7 @@ Este projeto foi construído utilizando o framework Angular. É necessário roda
 ## Como utilizar
 
 ### Aviso inicial
-Um requisito do projeto era simular loading e transições. O aplicativo está artificialmente lento para que as transições fiquem evidentes, e os formulários apresentam spinners de loading pelo mesmo motivo. Ele não é lento.
+Um requisito do projeto era simular loading e transições. O aplicativo está artificialmente lento para que as transições fiquem evidentes. Ele não é lento.
 
 ### Login
 O aplicativo vem com um usuário cadastrado por padrão. É possível fazer login com as credenciais dele, ou criar suas próprias. As credenciais do usuário são:
@@ -25,7 +25,7 @@ Para editar ou deletar o cadastro de uma consulta ou exame, a página "LISTAR PR
 ### Busca
 As páginas "INÍCIO" e "LISTAR PRONTUÁRIO" permitem um filtro de pacientes. As páginas de cadastro de consulta e de exame requerem uma busca para vincular o paciente.
 
-### Pesistência
+### Persistência
 O local storage do browser é utilizado para persistência entre sessões. Usuários para login, pacientes, consultas, exames, e os ids autoincrementados são persistidos.
 
 ### Utilidade
@@ -33,6 +33,15 @@ A ideia do sistema é agilizar o registro de consultas e exames, de forma que o 
 
 ## Desafios e Aprendizados
 O maior desafio foi o tempo. Não foi fácil realizar o projeto em duas semanas conciliando trabalho, estudos, e as outras facetas da vida. Foi uma boa oportunidade prática para se pensar sobre como reutilizar código, de forma a produzir mais com menos linhas, e facilitar a manutenção posterior.
+
+### Conceitos utilizados
+Sem nenhuma ordem em particular:
+- Serviços globais, reutilizando código;
+- Gerenciamento de banco de dados relacional com chaves primárias e estrangeiras, com todas as operações de CRUD;
+- Roteamento, inclusive com guardas de rota e redirecionamento;
+- Geração de componentes dinâmicos com informações do banco de dados;
+- Validação de formulários, inclusive de datas, máscaras com regex, autenticação;
+- UI bonita, responsiva, e acessível.
 
 ## Agradecimentos
 Primeiramente à Philips, por proporcionar a oportunidade dessa educação gratuita. Em segundo lugar a toda a equipe do SENAI, dando destaque aos professores Kelvis, Rayane, Romeu e Thais.
