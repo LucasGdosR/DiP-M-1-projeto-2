@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CurrentPageService } from 'src/app/services/current-page.service';
 import { DatabaseService } from 'src/app/services/database.service';
+import { MockLoadingService } from 'src/app/services/mock-loading.service';
 
 @Component({
   selector: 'app-inicio',
@@ -8,7 +9,7 @@ import { DatabaseService } from 'src/app/services/database.service';
   styleUrls: ['./inicio.component.scss']
 })
 export class InicioComponent {
-  constructor(private database: DatabaseService, private currentPage: CurrentPageService) {
+  constructor(private database: DatabaseService, private currentPage: CurrentPageService, public loadingService: MockLoadingService) {
     this.currentPage.currentPageTitle = 'ESTATÍSTICAS E INFORMAÇÕES'
   }
 

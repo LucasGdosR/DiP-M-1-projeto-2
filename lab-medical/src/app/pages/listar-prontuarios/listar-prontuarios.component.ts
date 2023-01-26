@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CurrentPageService } from 'src/app/services/current-page.service';
 import { DatabaseService } from 'src/app/services/database.service';
+import { MockLoadingService } from 'src/app/services/mock-loading.service';
 
 @Component({
   selector: 'app-listar-prontuarios',
@@ -9,7 +10,7 @@ import { DatabaseService } from 'src/app/services/database.service';
   styleUrls: ['./listar-prontuarios.component.scss']
 })
 export class ListarProntuariosComponent {
-  constructor(private database: DatabaseService, private router: Router, private currentPage: CurrentPageService) {
+  constructor(private database: DatabaseService, private router: Router, private currentPage: CurrentPageService, public loadingService: MockLoadingService) {
     this.currentPage.currentPageTitle = 'LISTAGEM E PRONTUÁRIOS'
   }
 

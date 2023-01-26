@@ -5,6 +5,7 @@ import Appointment from 'src/app/interfaces/appointment.interface';
 import Patient from 'src/app/interfaces/patient.interface';
 import { CurrentPageService } from 'src/app/services/current-page.service';
 import { DatabaseService } from 'src/app/services/database.service';
+import { MockLoadingService } from 'src/app/services/mock-loading.service';
 
 @Component({
   selector: 'app-cadastrar-consulta',
@@ -14,7 +15,6 @@ import { DatabaseService } from 'src/app/services/database.service';
 export class CadastrarConsultaComponent implements OnInit {
   appointmentId: any
   searchEnabled: boolean = true
-  finishedLoading: boolean = true
 
   formEnabled: boolean = false
   patientId!: number
@@ -27,7 +27,7 @@ export class CadastrarConsultaComponent implements OnInit {
   prescriptedMedicine?: string
   dosageAndPrecautions: string = ""
 
-  constructor(private database: DatabaseService, private route: ActivatedRoute, private router: Router, private currentPage: CurrentPageService) {
+  constructor(private database: DatabaseService, private route: ActivatedRoute, private router: Router, private currentPage: CurrentPageService, private loadingService: MockLoadingService) {
     currentPage.currentPageTitle = 'CADASTRO DE CONSULTA'
   }
 
@@ -107,16 +107,7 @@ export class CadastrarConsultaComponent implements OnInit {
     
     form.reset()
 
-    this.mockLoading()
-  }
-  
-  mockLoading() {
-    this.finishedLoading = false
-    setTimeout(() => {
-      this.finishedLoading = true
-      alert("Operação realizada com sucesso!")
-      this.initializeDateTime(this.getNow())
-    }, 1500)  
+    this.loadingService.mockSave()
   }
 
   getAppointmentIndex(): number {
@@ -126,6 +117,6 @@ export class CadastrarConsultaComponent implements OnInit {
   delete() {
     this.database.appointments.splice(this.getAppointmentIndex(), 1)
     this.database.persist('appointments', this.database.appointments)
-    this.mockLoading()
+    this.loadingService.mockSave()
   }
 }

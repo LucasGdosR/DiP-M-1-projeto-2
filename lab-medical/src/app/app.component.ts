@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginService } from './services/login.service';
+import { MockLoadingService } from './services/mock-loading.service';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +9,7 @@ import { LoginService } from './services/login.service';
 })
 export class AppComponent {
   title = 'lab-medical';
-  constructor(public loginService: LoginService) {}
+  constructor(public loginService: LoginService, public loadingService: MockLoadingService) {
+    this.loadingService.mockLoad()
+  }
 }

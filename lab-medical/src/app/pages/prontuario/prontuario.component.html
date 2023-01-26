@@ -12,7 +12,7 @@
             <h4 class="col-5 fs-5">Data: {{ appointment.date }}</h4>
             <h4 class="col-5 fs-5">Hora: {{ appointment.horario }}</h4>
             <div class="col-2 gx-2">
-                <button [routerLink]="['/cadastrar-consulta', appointment.idDaConsulta]" class="btn btn-outline-secondary border">
+                <button [routerLink]="['/cadastrar-consulta', appointment.idDaConsulta]" (click)="this.loadingService.mockLoad()" class="btn btn-outline-secondary border">
                     <i class="bi bi-pencil-square"></i> Editar
                 </button>
             </div>
@@ -32,7 +32,7 @@
             <h5 class="col-5 fs-5">Data: {{ exam.date }}</h5>
             <h5 class="col-5 fs-5">Hora: {{ exam.horario }}</h5>
             <div class="col-2 gx-2">
-                <button [routerLink]="['/cadastrar-exame', exam.idDoExame]" class="btn btn-outline-secondary border">
+                <button [routerLink]="['/cadastrar-exame', exam.idDoExame]" (click)="this.loadingService.mockLoad()" class="btn btn-outline-secondary border">
                     <i class="bi bi-pencil-square"></i> Editar
                 </button>
             </div>

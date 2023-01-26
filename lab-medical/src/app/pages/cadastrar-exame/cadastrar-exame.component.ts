@@ -5,6 +5,7 @@ import Exam from 'src/app/interfaces/exam.interface';
 import Patient from 'src/app/interfaces/patient.interface';
 import { CurrentPageService } from 'src/app/services/current-page.service';
 import { DatabaseService } from 'src/app/services/database.service';
+import { MockLoadingService } from 'src/app/services/mock-loading.service';
 
 @Component({
   selector: 'app-cadastrar-exame',
@@ -14,7 +15,6 @@ import { DatabaseService } from 'src/app/services/database.service';
 export class CadastrarExameComponent implements OnInit {
   examId: any
   searchEnabled: boolean = true
-  finishedLoading: boolean = true
 
   formEnabled: boolean = false
   patientId!: number
@@ -28,7 +28,7 @@ export class CadastrarExameComponent implements OnInit {
   url?: string
   results: string = ""
   
-  constructor(private database: DatabaseService, private route: ActivatedRoute, private router: Router, private currentPage: CurrentPageService) {
+  constructor(private database: DatabaseService, private route: ActivatedRoute, private router: Router, private currentPage: CurrentPageService, private loadingService: MockLoadingService) {
     this.currentPage.currentPageTitle = 'CADASTRO DE EXAME'
   }
 
@@ -110,18 +110,8 @@ export class CadastrarExameComponent implements OnInit {
 
     form.reset()
 
-    this.mockLoading()
+    this.loadingService.mockSave()
   }
-
-  mockLoading() {
-    this.finishedLoading = false
-    setTimeout(() => {
-      this.finishedLoading = true
-      alert("Operação realizada com sucesso!")
-      this.initializeDateTime(this.getNow())
-    }, 1500)  
-  }
-
 
   getExamIndex(): number {
     return this.database.exams.findIndex(exam => exam.idDoExame == this.examId)
@@ -130,6 +120,6 @@ export class CadastrarExameComponent implements OnInit {
   delete() {
     this.database.exams.splice(this.getExamIndex(), 1)
     this.database.persist('exams', this.database.exams)
-    this.mockLoading()
+    this.loadingService.mockSave()
   }
 }

@@ -14,7 +14,7 @@
             <span class="fw-bold">Geral</span>
           <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
-              <a [routerLink]='"/inicio"' routerLinkActive="bg-info" class="my-2 border nav-link active" aria-current="page">
+              <a [routerLink]='"/inicio"' (click)="this.loadingService.mockLoad()" routerLinkActive="bg-info" class="my-2 border nav-link active" aria-current="page">
                 <i class="bi bi-bar-chart-line"></i> INICIO
               </a>
             </li>
@@ -30,12 +30,12 @@
           <span class="fw-bold">Pacientes</span>
           <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
-              <a [routerLink]='"/cadastrar-paciente/-1"' routerLinkActive="bg-info" class="my-2 border nav-link active" aria-current="page">
+              <a [routerLink]='"/cadastrar-paciente/-1"' (click)="this.loadingService.mockLoad()" routerLinkActive="bg-info" class="my-2 border nav-link active" aria-current="page">
                 <i class="bi bi-person-plus"></i> CADASTRAR
               </a>
             </li>
             <li class="nav-item">
-              <a [routerLink]='"/listar-prontuarios"' routerLinkActive="bg-info" class="my-2 border nav-link active" aria-current="page">
+              <a [routerLink]='"/listar-prontuarios"' (click)="this.loadingService.mockLoad()" routerLinkActive="bg-info" class="my-2 border nav-link active" aria-current="page">
                 <i class="bi bi-list-ul"></i> LISTAR PRONTUÁRIO
               </a>
             </li>
@@ -46,12 +46,12 @@
           <span class="fw-bold">Exames</span>
           <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
-              <a [routerLink]='"/cadastrar-consulta/-1"' routerLinkActive="bg-info" class="my-2 border nav-link active" aria-current="page">
+              <a [routerLink]='"/cadastrar-consulta/-1"' (click)="this.loadingService.mockLoad()" routerLinkActive="bg-info" class="my-2 border nav-link active" aria-current="page">
                 <i class="bi bi-plus-lg"></i> CADASTRAR CONSULTA
               </a>
             </li>
             <li class="nav-item">
-              <a [routerLink]='"/cadastrar-exame/-1"' routerLinkActive="bg-info" class="my-2 border nav-link active" aria-current="page">
+              <a [routerLink]='"/cadastrar-exame/-1"' (click)="this.loadingService.mockLoad()" routerLinkActive="bg-info" class="my-2 border nav-link active" aria-current="page">
                 <i class="bi bi-plus-lg"></i> CADASTRAR EXAME
               </a>
             </li>

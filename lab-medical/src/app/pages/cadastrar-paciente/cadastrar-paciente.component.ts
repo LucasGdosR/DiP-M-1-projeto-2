@@ -5,6 +5,7 @@ import Address from 'src/app/interfaces/address.interface';
 import Patient from 'src/app/interfaces/patient.interface';
 import { CurrentPageService } from 'src/app/services/current-page.service';
 import { DatabaseService } from 'src/app/services/database.service';
+import { MockLoadingService } from 'src/app/services/mock-loading.service';
 
 @Component({
   selector: 'app-cadastrar-paciente',
@@ -14,7 +15,6 @@ import { DatabaseService } from 'src/app/services/database.service';
 export class CadastrarPacienteComponent implements OnInit {
   patientId: any
   hasAppointmentOrExam?: boolean
-  finishedLoading: boolean = true
 
   fullName: string = ""
   gender: string = ""
@@ -41,7 +41,7 @@ export class CadastrarPacienteComponent implements OnInit {
   neighborhood: string = ""
   reference: string = ""
   
-  constructor(public database: DatabaseService, private route: ActivatedRoute, private router: Router, private currentPage: CurrentPageService) {
+  constructor(public database: DatabaseService, private route: ActivatedRoute, private router: Router, private currentPage: CurrentPageService, private loadingService: MockLoadingService) {
     this.currentPage.currentPageTitle = 'CADASTRO DE PACIENTE'
   }
 
@@ -149,15 +149,7 @@ export class CadastrarPacienteComponent implements OnInit {
 
     form.reset()
 
-    this.mockLoading()
-  }
-  
-  mockLoading() {
-    this.finishedLoading = false
-    setTimeout(() => {
-      this.finishedLoading = true
-      alert("Operação realizada com sucesso!")
-    }, 1500)  
+    this.loadingService.mockSave()
   }
 
   getPatientIndex(): number {
@@ -213,7 +205,7 @@ export class CadastrarPacienteComponent implements OnInit {
   delete() {
     this.database.patients.splice(this.getPatientIndex(), 1)
     this.database.persist('patients', this.database.patients)
-    this.mockLoading()
+    this.loadingService.mockSave()
   }
 
   getAddress() {

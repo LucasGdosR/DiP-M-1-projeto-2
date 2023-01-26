@@ -5,6 +5,7 @@ import Exam from 'src/app/interfaces/exam.interface';
 import Patient from 'src/app/interfaces/patient.interface';
 import { CurrentPageService } from 'src/app/services/current-page.service';
 import { DatabaseService } from 'src/app/services/database.service';
+import { MockLoadingService } from 'src/app/services/mock-loading.service';
 
 @Component({
   selector: 'app-prontuario',
@@ -23,7 +24,7 @@ export class ProntuarioComponent implements OnInit {
   appointments!: Appointment[]
   exams!: Exam[]
   
-  constructor(private database: DatabaseService, private route: ActivatedRoute, private router: Router, private currentPage: CurrentPageService) {
+  constructor(private database: DatabaseService, private route: ActivatedRoute, private router: Router, private currentPage: CurrentPageService, public loadingService: MockLoadingService) {
     this.currentPage.currentPageTitle = 'PRONTUÁRIO DE PACIENTE'
   }
   
