@@ -5,7 +5,7 @@
     <ul class="row list-unstyled text-center mx-3">
         <div class="col-4 gx-4" *ngFor="let statistic of statistics">
             <li class="border shadow p-3 mb-4 bg-body-tertiary rounded">
-                <img [src]="statistic['icon']" height="75vh" alt="">
+                <img [src]="statistic['icon']" height="75vh" [alt]="statistic['alt']">
                 <span class="fs-1 ms-3">{{ statistic['quantity'] }}</span>
                 <p class="fw-bold">{{ statistic['title'] }}</p>
             </li>
