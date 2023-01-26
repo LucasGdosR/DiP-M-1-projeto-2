@@ -14,6 +14,7 @@ import { DatabaseService } from 'src/app/services/database.service';
 export class CadastrarExameComponent implements OnInit {
   examId: any
   searchEnabled: boolean = true
+  finishedLoading: boolean = true
 
   formEnabled: boolean = false
   patientId!: number
@@ -104,14 +105,23 @@ export class CadastrarExameComponent implements OnInit {
     }
 
     else this.database.exams[this.getExamIndex()] = exam
+    
+    this.database.persist('exams', this.database.exams)
 
     form.reset()
 
-    this.database.persist('exams', this.database.exams)
-    alert("Operação realizada com sucesso.")
-
-    this.initializeDateTime(this.getNow())
+    this.mockLoading()
   }
+
+  mockLoading() {
+    this.finishedLoading = false
+    setTimeout(() => {
+      this.finishedLoading = true
+      alert("Operação realizada com sucesso!")
+      this.initializeDateTime(this.getNow())
+    }, 1500)  
+  }
+
 
   getExamIndex(): number {
     return this.database.exams.findIndex(exam => exam.idDoExame == this.examId)
@@ -120,6 +130,6 @@ export class CadastrarExameComponent implements OnInit {
   delete() {
     this.database.exams.splice(this.getExamIndex(), 1)
     this.database.persist('exams', this.database.exams)
-    alert("Operação realizada com sucesso.")
+    this.mockLoading()
   }
 }

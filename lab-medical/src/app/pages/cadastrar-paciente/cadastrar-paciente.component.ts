@@ -14,6 +14,7 @@ import { DatabaseService } from 'src/app/services/database.service';
 export class CadastrarPacienteComponent implements OnInit {
   patientId: any
   hasAppointmentOrExam?: boolean
+  finishedLoading: boolean = true
 
   fullName: string = ""
   gender: string = ""
@@ -144,10 +145,19 @@ export class CadastrarPacienteComponent implements OnInit {
     // Editar usuário existente
     else this.database.patients[this.getPatientIndex()] = patient
     
+    this.database.persist('patients', this.database.patients)
+
     form.reset()
 
-    this.database.persist('patients', this.database.patients)
-    alert("Operação realizada com sucesso!")
+    this.mockLoading()
+  }
+  
+  mockLoading() {
+    this.finishedLoading = false
+    setTimeout(() => {
+      this.finishedLoading = true
+      alert("Operação realizada com sucesso!")
+    }, 1500)  
   }
 
   getPatientIndex(): number {
@@ -203,7 +213,7 @@ export class CadastrarPacienteComponent implements OnInit {
   delete() {
     this.database.patients.splice(this.getPatientIndex(), 1)
     this.database.persist('patients', this.database.patients)
-    alert("Operação realizada com sucesso!")
+    this.mockLoading()
   }
 
   getAddress() {
