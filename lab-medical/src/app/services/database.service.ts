@@ -8,13 +8,16 @@ import Patient from '../interfaces/patient.interface';
 })
 export class DatabaseService {
 
-  patients!: Patient[]
-  appointments!: Appointment[]
-  exams!: Exam[]
+  patients: Patient[]
+  appointments: Appointment[]
+  exams: Exam[]
 
-  nextPatientID!: number
-  nextAppointmentID!: number
-  nextExamID!: number
+  nextPatientID: number
+  nextAppointmentID: number
+  nextExamID: number
+
+  loggedIn: boolean
+  user: string
 
   constructor() {
     const patients = localStorage.getItem('patients')
@@ -34,6 +37,12 @@ export class DatabaseService {
 
     const nextExamID = localStorage.getItem('nextExamID')
     this.nextExamID = nextExamID ? JSON.parse(nextExamID) : 0
+
+    const loggedIn = localStorage.getItem('loggedIn')
+    this.loggedIn = loggedIn ? JSON.parse(loggedIn) : false
+
+    const user = localStorage.getItem('user')
+    this.user = user ? JSON.parse(user) : ''
    }
 
    persist(localKey: string, value: any) {

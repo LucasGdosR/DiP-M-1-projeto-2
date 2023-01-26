@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { LoginService } from '../services/login.service';
 
 @Injectable({
@@ -8,12 +7,14 @@ import { LoginService } from '../services/login.service';
 })
 export class LoggedOutGuard implements CanActivate {
   
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService, private router: Router) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return !this.loginService.loggedIn
+    state: RouterStateSnapshot): boolean {
+    if (!this.loginService.loggedIn) return true
+    else this.router.navigate(['/inicio'])
+    return false
   }
   
 }
