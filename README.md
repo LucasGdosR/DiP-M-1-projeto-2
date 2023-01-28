@@ -41,6 +41,7 @@ Sem nenhuma ordem em particular:
 - Roteamento, inclusive com guardas de rota e redirecionamento;
 - Geração de componentes dinâmicos com informações do banco de dados;
 - Validação de formulários, inclusive de datas, máscaras com regex, autenticação;
+- Consumo de API para busca de CEP;
 - UI bonita, responsiva, e acessível.
 
 ## Agradecimentos
