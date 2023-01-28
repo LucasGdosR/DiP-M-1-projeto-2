@@ -38,10 +38,13 @@ export class InicioComponent {
   ]
 
   filterPatients() {
-    this.filteredPatients =
-    this.database.patients.filter(
+    this.loadingService.mockLoad()
+    setTimeout(() => {
+      this.filteredPatients =
+      this.database.patients.filter(
       patient => patient.nomeCompleto.toLocaleLowerCase().includes(this.query.toLocaleLowerCase()) ||
       patient.telefone.includes(this.query) ||
       patient.email?.includes(this.query))
+    }, 700)
   }
 }
