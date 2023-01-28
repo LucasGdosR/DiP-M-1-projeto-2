@@ -14,8 +14,8 @@
 
     <h2 class="row mx-3">Informações Rápidas de Pacientes</h2>
     <form (submit)="filterPatients()" class="row mx-3">
-        <input [(ngModel)]="query" class="col-9 border rounded" type="text" placeholder="Digite nome, telefone, ou e-mail do paciente" name="query">
-        <input class="col-2 btn btn-outline-secondary offset-md-1" type="submit" value="Buscar" name="executeQuery">
+        <input [(ngModel)]="query" class="col-10 border rounded" type="text" placeholder="Digite nome, telefone, ou e-mail do paciente" name="query">
+        <button class="col-1 btn btn-outline-secondary offset-md-1" type="submit" name="executeQuery"><i class="bi bi-search"></i></button>
     </form>
 
     <ul class="row list-unstyled text-center mx-3">

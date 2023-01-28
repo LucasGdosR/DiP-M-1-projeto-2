@@ -3,8 +3,8 @@
     <h2 class="row m-3">Utilize a barra de pesquisa para buscar</h2>
 
     <form (submit)="filterPatients()" class="row m-3">
-        <input [(ngModel)]="query" class="col-9 border rounded" type="text" placeholder="Digite o nome ou o registro do paciente" name="query">
-        <input class="col-2 btn btn-outline-secondary offset-md-1" type="submit" value="Buscar">
+        <input [(ngModel)]="query" class="col-10 border rounded" type="text" placeholder="Digite o nome ou o registro do paciente" name="query">
+        <button class="col-1 btn btn-outline-secondary offset-md-1" type="submit"><i class="bi bi-search"></i></button>
     </form>
 
     <div class="row mx-3">
