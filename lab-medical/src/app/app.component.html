@@ -1,10 +1,10 @@
-<div *ngIf="loginService.loggedIn; else login" class="d-flex flex-column fade-in">
-    <app-toolbar class="fixed-top"></app-toolbar>
-    <div class="d-flex flex-row flex-grow-1 align-items-stretch mt-5">
-        <nav class="d-flex flex-column align-content-stretch">
+<div *ngIf="loginService.loggedIn; else login" class="d-flex flex-column fade-in" style="height: 100vh;">
+    <app-toolbar class="bg-primary" style="height: 58px"></app-toolbar>
+    <div class="d-flex flex-row flex-grow-1 align-items-stretch">
+        <nav class="d-flex flex-column align-content-stretch bg-primary">
             <app-menu></app-menu>
         </nav>
-        <main class="d-flex flex-column flex-grow-1">
+        <main class="d-flex flex-column flex-grow-1 overflow-auto" style="height: 880px">
             <router-outlet class="align-self-stretch"></router-outlet>
         </main>
     </div>
