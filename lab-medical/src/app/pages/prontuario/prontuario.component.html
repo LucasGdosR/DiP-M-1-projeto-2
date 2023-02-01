@@ -39,7 +39,7 @@
             <h4 class="col-10 fs-5">Laboratório: {{ exam.laboratorio }}</h4>
             <p *ngIf="exam.url; else offset" class="col-2 my-2">
                 Anexo
-                <a [href]="exam.url">
+                <a [href]="exam.url" target="_blank">
                     <i class="bi bi-paperclip"></i>
                 </a>
             </p>
