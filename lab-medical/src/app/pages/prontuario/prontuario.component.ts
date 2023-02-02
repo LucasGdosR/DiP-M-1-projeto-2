@@ -31,12 +31,7 @@ export class ProntuarioComponent implements OnInit {
   ngOnInit(): void {
     this.patientId = this.route.snapshot.paramMap.get('id')
     this.patient = this.database.patients.find(patient => patient.id == this.patientId)
-    this.patientName = this.patient!.nomeCompleto
-    this.insurance = this.patient?.convenio ? this.patient.convenio : "Sem Plano"
-    this.emergencyContact = this.patient!.contatoDeEmergencia
-    this.allergyList = this.patient?.listaDeAlergias
-    this.careList = this.patient?.listaDeCuidadosEspecificos
-  
+    
     this.appointments = this.database.appointments.filter(appointment => appointment.idDoPaciente == this.patientId)
     this.sortByTimeAndDate(this.appointments)
 
