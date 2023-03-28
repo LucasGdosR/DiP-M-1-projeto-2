@@ -20,19 +20,19 @@ export class InicioComponent {
     { 
       "title" : "Pacientes",
       "quantity" : this.database.patients.length,
-      "icon" : "../../../../assets/pacientes.png",
+      "icon" : "assets/pacientes.png",
       "alt" : "Ícone de pacientes."
     },
     {
       "title" : "Consultas",
       "quantity" : this.database.appointments.length,
-      "icon" : "../../../../assets/consulta-medica.png",
+      "icon" : "assets/consulta-medica.png",
       "alt" : "Ícone de consultas."
     },
     {
       "title" : "Exames",
       "quantity" : this.database.exams.length,
-      "icon" : "../../../../assets/prontuario-medico.png",
+      "icon" : "assets/prontuario-medico.png",
       "alt" : "Ícone de exames."
     }
   ]
